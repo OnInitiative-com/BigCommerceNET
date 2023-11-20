@@ -8,7 +8,7 @@
     <Description>Generic library for accessing BigCommerce's store data.</Description>
     <Copyright>ON INITIATIVE LLC</Copyright>
     <PackageProjectUrl>https://github.com/OnInitiative-com</PackageProjectUrl>
-    <PackageReadmeFile>readme.md</PackageReadmeFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/OnInitiative-com/BigCommerceNET</RepositoryUrl>
     <PackageTags>bigcommerce</PackageTags>
     <PackageReleaseNotes>Initial release</PackageReleaseNotes>
@@ -17,6 +17,17 @@
     <PackageLicenseFile>license.txt</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\license.txt">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Netco" Version="3.0.0" />
