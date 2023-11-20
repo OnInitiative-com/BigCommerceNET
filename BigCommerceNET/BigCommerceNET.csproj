@@ -17,6 +17,9 @@
     <PackageLicenseFile>license.txt</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <PackageIcon>app_logo.png</PackageIcon>
+    <Version>0.11.1</Version>
+    <Company>ON INITIATIVE LLC</Company>
+    <Authors>ON INITIATIVE LLC</Authors>
   </PropertyGroup>
 
   <ItemGroup>

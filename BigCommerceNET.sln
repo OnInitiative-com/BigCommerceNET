@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigCommerceNET", "BigCommerceNET\BigCommerceNET.csproj", "{9D10C335-98F3-4487-BC09-FBB6A01709AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BigCommerceNET", "BigCommerceNET\BigCommerceNET.csproj", "{9D10C335-98F3-4487-BC09-FBB6A01709AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\TestProject.csproj", "{358C2241-CA89-4035-88EE-7649C66C7AFC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{9D10C335-98F3-4487-BC09-FBB6A01709AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D10C335-98F3-4487-BC09-FBB6A01709AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D10C335-98F3-4487-BC09-FBB6A01709AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{358C2241-CA89-4035-88EE-7649C66C7AFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{358C2241-CA89-4035-88EE-7649C66C7AFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{358C2241-CA89-4035-88EE-7649C66C7AFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{358C2241-CA89-4035-88EE-7649C66C7AFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
