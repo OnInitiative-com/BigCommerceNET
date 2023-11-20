@@ -16,9 +16,14 @@
     <FileVersion>0.11.1</FileVersion>
     <PackageLicenseFile>license.txt</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <PackageIcon>app_logo.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\app_logo.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
     <None Include="..\license.txt">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
