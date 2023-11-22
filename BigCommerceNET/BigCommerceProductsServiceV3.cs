@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Threading;
-using System.Threading.Tasks;
-using BigCommerceNET.Misc;
+﻿using BigCommerceNET.Misc;
 using BigCommerceNET.Models.Command;
 using BigCommerceNET.Models.Configuration;
 using BigCommerceNET.Models.Product;
@@ -16,7 +9,7 @@ using ServiceStack;
 
 namespace BigCommerceNET
 {
-	sealed class BigCommerceProductsServiceV3 : BigCommerceBaseProductsService, IBigCommerceProductsService
+    sealed class BigCommerceProductsServiceV3 : BigCommerceBaseProductsService, IBigCommerceProductsService
 	{
 		private const string _inventoryTrackingByOption = "variant";
 
@@ -120,13 +113,18 @@ namespace BigCommerceNET
                             Height = x.Height,
                             Depth = x.Depth,
                             CostPrice = x.CostPrice,
-                            ImageFile = x.ImageUrl,
+                            ImageUrl = x.ImageUrl,
                             Attributes = x.Attributes
                         }).ToList(),
                         Main_Images = product.Images!.Select(y => new BigCommerceImage
                         {
+                            ImageFile = y.ImageFile,
+                            IsThumbnail = y.IsThumbnail,
+                            SortOrder = y.SortOrder,
+                            Description = y.Description,
+                            ImageUrl = y.ImageUrl,
                             UrlStandard = y.UrlStandard,
-                            IsThumbnail = y.IsThumbnail
+                            DateModified = y.DateModified
                         }).ToList()
                     });
                 }
@@ -218,14 +216,19 @@ namespace BigCommerceNET
                             Width = x.Width,
                             Height = x.Height,
                             Depth = x.Depth,
-                            CostPrice = x.CostPrice,                            
-                            ImageFile = x.ImageUrl,
+                            CostPrice = x.CostPrice,
+                            ImageUrl = x.ImageUrl,
                             Attributes = x.Attributes
                         }).ToList(),
                         Main_Images = product.Images!.Select(y => new BigCommerceImage
                         {
+                            ImageFile = y.ImageFile,
+                            IsThumbnail = y.IsThumbnail,
+                            SortOrder = y.SortOrder,
+                            Description = y.Description,
+                            ImageUrl = y.ImageUrl,
                             UrlStandard = y.UrlStandard,
-                            IsThumbnail = y.IsThumbnail
+                            DateModified = y.DateModified
                         }).ToList()
                     });
 				}

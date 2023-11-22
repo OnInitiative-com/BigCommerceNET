@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace BigCommerceNET.Models.Product
 {
-	[ DataContract ]
+    [ DataContract ]
 	public class BigCommerceProductInfoData: BigCommerceProductBase
 	{
 		[ DataMember( Name = "data" ) ]

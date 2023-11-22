@@ -46,10 +46,7 @@ namespace BigCommerceNET.Models.Product
 		public decimal? CostPrice{ get; set; }	
 
 		[ DataMember( Name = "adjusted_weight" ) ]
-		public decimal? AdjustedWeight{ get; set; }
-
-		[ DataMember( Name = "image_file" ) ]
-		public string? ImageFile{ get; set; }
+		public decimal? AdjustedWeight{ get; set; }        
 
         [DataMember(Name = "image_url")]
         public string? ImageUrl { get; set; }

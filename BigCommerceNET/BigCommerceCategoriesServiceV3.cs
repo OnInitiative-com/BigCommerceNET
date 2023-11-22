@@ -1,22 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Threading;
-using System.Threading.Tasks;
-using BigCommerceNET.Misc;
+﻿using BigCommerceNET.Misc;
 using BigCommerceNET.Models.Command;
-using BigCommerceNET.Models.Configuration;
 using BigCommerceNET.Models.Category;
 using BigCommerceNET.Services;
 using Netco.ActionPolicyServices;
-using Netco.Extensions;
-using ServiceStack;
 
 namespace BigCommerceNET
 {
-	sealed class BigCommerceCategoriesServiceV3 : BigCommerceBaseCategoriesService, IBigCommerceCategoriesService
+    sealed class BigCommerceCategoriesServiceV3 : BigCommerceBaseCategoriesService, IBigCommerceCategoriesService
 	{
 		
 		public BigCommerceCategoriesServiceV3( WebRequestServices services ) : base( services )
@@ -63,7 +53,9 @@ namespace BigCommerceNET
                             Url = CatURL!.Url
                         },
                         Category_Name = category.Name!,
-                        IsVisible = category.IsVisible
+                        IsVisible = category.IsVisible,
+						Parent_Id = category.Parent_Id,
+						SortOrder = category.SortOrder
                     });
                 }
 
@@ -101,20 +93,22 @@ namespace BigCommerceNET
 				if (categoriesWithinPage.Response == null)
 					break;
 
-				foreach (var product in categoriesWithinPage.Response.Data)
+				foreach (var category in categoriesWithinPage.Response.Data)
 				{
-					var productCatURL = product.Category_URL;
+					var productCatURL = category.Category_URL;
 
 					categories.Add(new BigCommerceCategory
 					{
-						Id = product.Id,
+						Id = category.Id,
 						Category_URL = new BigCommerceCategoryURL()
 						{
 							Url = productCatURL!.Url
 						},
-						Category_Name = product.Name!
-
-					});
+						Category_Name = category.Name!,
+                        IsVisible = category.IsVisible,
+                        Parent_Id = category.Parent_Id,
+                        SortOrder = category.SortOrder
+                    });
 				}
 
 				if (categoriesWithinPage.Response.Data.Length < RequestMaxLimit)

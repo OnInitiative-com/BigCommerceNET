@@ -18,5 +18,11 @@ namespace BigCommerceNET.Models.Category
 		[DataMember(Name = "is_visible")]
 		public bool IsVisible { get; set; }
 
-	}
+        [DataMember(Name = "parent_id")]
+        public int Parent_Id { get; set; }
+
+        [DataMember(Name = "sort_order")]
+        public int SortOrder { get; set; }
+
+    }
 }

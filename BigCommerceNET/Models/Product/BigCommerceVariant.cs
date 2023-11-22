@@ -40,13 +40,13 @@ namespace BigCommerceNET.Models.Product
         public bool IsFreeShipping { get; set; }       
 
         [ DataMember( Name = "cost_price" ) ]
-		public decimal? CostPrice{ get; set; }	
-
-		[ DataMember( Name = "image_url" ) ]
-		public string? ImageUrl{ get; set; }
+		public decimal? CostPrice{ get; set; }		
 
 		[ DataMember( Name = "inventory_level" ) ]
 		public string? Quantity{ get; set; }
+
+        [DataMember(Name = "image_url")]
+        public string? ImageUrl { get; set; }      
 
         [DataMember(Name = "option_values")]
         public List<OptionValue>? Attributes { get; set; }

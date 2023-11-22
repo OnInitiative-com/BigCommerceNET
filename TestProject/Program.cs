@@ -12,7 +12,8 @@ foreach (var category in categories)
 }
 
 foreach (var product in products)
-{
+{    
+
     Console.WriteLine($"Product: {product.Name}");
 }
 
