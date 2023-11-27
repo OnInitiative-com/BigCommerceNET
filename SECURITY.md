@@ -15,7 +15,7 @@ We take the security of "BigCommerceNET" seriously. If you discover any security
 
     Check Supported Versions: Ensure that the vulnerability exists in a currently supported version. Only these versions will receive security updates.
 
-    Contact us: Send an email to security@example.com with the subject line "BigCommerceNET Security Vulnerability." Provide a detailed description of the vulnerability, including steps to reproduce if possible. Include any relevant logs or screenshots.
+    Contact us: Send an email to support@oninitiative.com with the subject line "BigCommerceNET Security Vulnerability." Provide a detailed description of the vulnerability, including steps to reproduce if possible. Include any relevant logs or screenshots.
 
     Expectations: You can expect an initial response to your report within 48 hours. Our team will work diligently to validate the issue and determine its impact.
 
