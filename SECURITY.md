@@ -1,4 +1,4 @@
-Supported Versions
+**Supported Versions**
 
 Currently supported .NET versions of the "BigCommerceNET" repository with respect to security updates are listed below.
 
@@ -7,11 +7,11 @@ Currently supported .NET versions of the "BigCommerceNET" repository with respec
 | 8.0.x        | :white_check_mark: |
 | < 8.0        | :x:                |
 
-Reporting a Vulnerability
+**Reporting a Vulnerability**
 
 We take the security of "BigCommerceNET" seriously. If you discover any security issues, we appreciate your help in disclosing the issue to us responsibly.
 
-##Please follow these steps to report a vulnerability:
+**Please follow these steps to report a vulnerability:**
 
     Check Supported Versions: Ensure that the vulnerability exists in a currently supported version. Only these versions will receive security updates.
 
