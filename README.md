@@ -22,7 +22,7 @@ BigCommerceNET is a .NET library that provides a convenient way to interact with
 
 - **Easy Integration:** Quickly integrate your .NET applications with the BigCommerce API.
 - **CRUD Operations:** Perform CRUD (Create, Read, Update, Delete) operations on products, orders, customers, and other resources.
-- **Authentication:** Support for OAuth 2.0 authentication to ensure secure communication with the BigCommerce API.
+- **Authentication:** Support for OAuth 2.0, V2, and V3 API connectivity authentication to ensure secure communication with the BigCommerce API.
 
 ## Getting Started
 
