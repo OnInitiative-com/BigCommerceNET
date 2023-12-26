@@ -2,46 +2,88 @@
 
 namespace BigCommerceNET.Models.Address
 {
-	[ DataContract ]
+    /// <summary>
+    /// The big commerce shipping address.
+    /// </summary>
+    [ DataContract ]
 	public class BigCommerceShippingAddress
 	{
-		[ DataMember( Name = "street_1" ) ]
+        /// <summary>
+        /// Gets or Sets the street1.
+        /// </summary>
+        [ DataMember( Name = "street_1" ) ]
 		public string? Street1 { get; set; }
 
-		[ DataMember( Name = "street_2" ) ]
+        /// <summary>
+        /// Gets or Sets the street2.
+        /// </summary>
+        [ DataMember( Name = "street_2" ) ]
 		public string? Street2 { get; set; }
 
-		[ DataMember( Name = "city" ) ]
+        /// <summary>
+        /// Gets or Sets the city.
+        /// </summary>
+        [ DataMember( Name = "city" ) ]
 		public string? City { get; set; }
 
-		[ DataMember( Name = "zip" ) ]
+        /// <summary>
+        /// Gets or Sets the zip.
+        /// </summary>
+        [ DataMember( Name = "zip" ) ]
 		public string? Zip { get; set; }
 
-		[ DataMember( Name = "state" ) ]
+        /// <summary>
+        /// Gets or Sets the state.
+        /// </summary>
+        [ DataMember( Name = "state" ) ]
 		public string? State { get; set; }
 
-		[ DataMember( Name = "country" ) ]
+        /// <summary>
+        /// Gets or Sets the country.
+        /// </summary>
+        [ DataMember( Name = "country" ) ]
 		public string? Country { get; set; }
 
-		[ DataMember( Name = "country_iso2" ) ]
+        /// <summary>
+        /// Gets or Sets the country iso2.
+        /// </summary>
+        [ DataMember( Name = "country_iso2" ) ]
 		public string? CountryIso2 { get; set; }
 
-		[ DataMember( Name = "shipping_method" ) ]
+        /// <summary>
+        /// Gets or Sets the shipping method.
+        /// </summary>
+        [ DataMember( Name = "shipping_method" ) ]
 		public string? ShippingMethod{ get; set; }
 
-		[ DataMember( Name = "first_name" ) ]
+        /// <summary>
+        /// Gets or Sets the first name.
+        /// </summary>
+        [ DataMember( Name = "first_name" ) ]
 		public string? FirstName{ get; set; }
 
-		[ DataMember( Name = "last_name" ) ]
+        /// <summary>
+        /// Gets or Sets the last name.
+        /// </summary>
+        [ DataMember( Name = "last_name" ) ]
 		public string? LastName{ get; set; }
 
-		[ DataMember( Name = "company" ) ]
+        /// <summary>
+        /// Gets or Sets the company.
+        /// </summary>
+        [ DataMember( Name = "company" ) ]
 		public string? Company{ get; set; }
 
-		[ DataMember( Name = "phone" ) ]
+        /// <summary>
+        /// Gets or Sets the phone.
+        /// </summary>
+        [ DataMember( Name = "phone" ) ]
 		public string? Phone{ get; set; }
 
-		[ DataMember( Name = "email" ) ]
+        /// <summary>
+        /// Gets or Sets the email.
+        /// </summary>
+        [ DataMember( Name = "email" ) ]
 		public string? Email{ get; set; }
 	}
 }

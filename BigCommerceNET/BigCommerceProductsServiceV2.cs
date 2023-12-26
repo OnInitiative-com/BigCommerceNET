@@ -12,13 +12,24 @@ using ServiceStack;
 
 namespace BigCommerceNET
 {
-	sealed class BigCommerceProductsServiceV2 : BigCommerceBaseProductsService, IBigCommerceProductsService
+    /// <summary>
+    /// The big commerce products service v2.
+    /// </summary>
+    sealed class BigCommerceProductsServiceV2 : BigCommerceBaseProductsService, IBigCommerceProductsService
 	{
-		public BigCommerceProductsServiceV2( WebRequestServices services ) : base( services )
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BigCommerceProductsServiceV2"/> class.
+        /// </summary>
+        /// <param name="services">The services.</param>
+        public BigCommerceProductsServiceV2( WebRequestServices services ) : base( services )
 		{ }
 
         #region Get
 
+        /// <summary>
+        /// Get the store name.
+        /// </summary>
+        /// <returns>A string.</returns>
         public string GetStoreName()
         {
             var marker = this.GetMarker();
@@ -26,6 +37,10 @@ namespace BigCommerceNET
 
         }
 
+        /// <summary>
+        /// Get the store domain.
+        /// </summary>
+        /// <returns>A string.</returns>
         public string GetStoreDomain()
         {
             var marker = this.GetMarker();
@@ -33,6 +48,10 @@ namespace BigCommerceNET
 
         }
 
+        /// <summary>
+        /// Get the store safe URL.
+        /// </summary>
+        /// <returns>A string.</returns>
         public string GetStoreSafeURL()
         {
             var marker = this.GetMarker();
@@ -40,6 +59,11 @@ namespace BigCommerceNET
 
         }
 
+        /// <summary>
+        /// Gets the products.
+        /// </summary>
+        /// <param name="includeExtendInfo">If true, include extend info.</param>
+        /// <returns><![CDATA[A List<BigCommerceProduct>.]]></returns>
         public List<BigCommerceProduct> GetProducts(bool includeExtendInfo)
         {
             var products = new List<BigCommerceProduct>();
@@ -70,6 +94,12 @@ namespace BigCommerceNET
             return products;
         }
 
+        /// <summary>
+        /// Gets the products asynchronously.
+        /// </summary>
+        /// <param name="token">The token.</param>
+        /// <param name="includeExtendedInfo">If true, include extended info.</param>
+        /// <returns><![CDATA[A Task< List< BigCommerceProduct > >.]]></returns>
         public async Task< List< BigCommerceProduct > > GetProductsAsync( CancellationToken token, bool includeExtendedInfo )
 		{
 			var products = new List< BigCommerceProduct >();
@@ -100,9 +130,16 @@ namespace BigCommerceNET
 			return products;
 		}
 
-		
 
-		protected override async Task FillWeightUnitAsync( IEnumerable< BigCommerceProduct > products, CancellationToken token, string marker )
+
+        /// <summary>
+        /// Fill weight unit asynchronously.
+        /// </summary>
+        /// <param name="products">The products.</param>
+        /// <param name="token">The token.</param>
+        /// <param name="marker">The marker.</param>
+        /// <returns>A Task.</returns>
+        protected override async Task FillWeightUnitAsync( IEnumerable< BigCommerceProduct > products, CancellationToken token, string marker )
 		{
 			var command = BigCommerceCommand.GetStoreV2;
 			var store = await ActionPolicies.GetAsync( marker, command.Command ).Get( async () =>
@@ -115,7 +152,14 @@ namespace BigCommerceNET
 			}
 		}
 
-		protected override async Task FillBrandsAsync( IEnumerable< BigCommerceProduct > products, CancellationToken token, string marker )
+        /// <summary>
+        /// Fill brands asynchronously.
+        /// </summary>
+        /// <param name="products">The products.</param>
+        /// <param name="token">The token.</param>
+        /// <param name="marker">The marker.</param>
+        /// <returns>A Task.</returns>
+        protected override async Task FillBrandsAsync( IEnumerable< BigCommerceProduct > products, CancellationToken token, string marker )
 		{
 			var brands = new List< BigCommerceBrand >();
 			for( var i = 1; i < int.MaxValue; i++ )
@@ -139,6 +183,10 @@ namespace BigCommerceNET
 
         #region Update
 
+        /// <summary>
+        /// Updates the products.
+        /// </summary>
+        /// <param name="products">The products.</param>
         public void UpdateProducts(List<BigCommerceProduct> products)
         {
             var marker = this.GetMarker();
@@ -154,6 +202,12 @@ namespace BigCommerceNET
             }
         }
 
+        /// <summary>
+        /// Updates the products asynchronously.
+        /// </summary>
+        /// <param name="products">The products.</param>
+        /// <param name="token">The token.</param>
+        /// <returns>A Task.</returns>
         public async Task UpdateProductsAsync( List< BigCommerceProduct > products, CancellationToken token )
 		{
 			var marker = this.GetMarker();
@@ -170,6 +224,10 @@ namespace BigCommerceNET
 			} );
 		}
 
+        /// <summary>
+        /// Updates the product options.
+        /// </summary>
+        /// <param name="productOptions">The product options.</param>
         public void UpdateProductOptions(List<BigCommerceProductOption> productOptions)
         {
             var marker = this.GetMarker();
@@ -186,6 +244,12 @@ namespace BigCommerceNET
         }
 
 
+        /// <summary>
+        /// Updates the product options asynchronously.
+        /// </summary>
+        /// <param name="productOptions">The product options.</param>
+        /// <param name="token">The token.</param>
+        /// <returns>A Task.</returns>
         public async Task UpdateProductOptionsAsync( List< BigCommerceProductOption > productOptions, CancellationToken token )
 		{
 			var marker = this.GetMarker();

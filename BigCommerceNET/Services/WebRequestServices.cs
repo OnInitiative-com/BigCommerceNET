@@ -1,12 +1,7 @@
-﻿using System;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Net;
 using System.Net.Http.Headers;
 using System.Runtime.CompilerServices;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using BigCommerceNET.Misc;
 using BigCommerceNET.Models;
 using BigCommerceNET.Models.Command;
@@ -16,14 +11,34 @@ using Newtonsoft.Json;
 
 namespace BigCommerceNET.Services
 {
+    /// <summary>
+    /// The web request services.
+    /// </summary>
     internal class WebRequestServices
     {
+        /// <summary>
+        /// Request timeout ms.
+        /// </summary>
         private const int RequestTimeoutMs = 30 * 60 * 1000;
 
+        /// <summary>
+        /// The config.
+        /// </summary>
         private readonly BigCommerceConfig _config;
+        /// <summary>
+        /// The host.
+        /// </summary>
         private readonly string _host;
+        /// <summary>
+        /// The api version.
+        /// </summary>
         private readonly APIVersion _apiVersion;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WebRequestServices"/> class.
+        /// </summary>
+        /// <param name="config">The config.</param>
+        /// <param name="marker">The marker.</param>
         public WebRequestServices(BigCommerceConfig config, string marker)
         {
             _config = config;
@@ -31,6 +46,15 @@ namespace BigCommerceNET.Services
             _host = _apiVersion == APIVersion.V2 ? ResolveHost(config, marker) : config.NativeHost!;
         }
 
+        /// <summary>
+        /// Gets the response by relative url asynchronously.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="url">The url.</param>
+        /// <param name="commandParams">The command params.</param>
+        /// <param name="marker">The marker.</param>
+        /// <param name="callerMethodName">The caller method name.</param>
+        /// <returns><![CDATA[A Task<BigCommerceResponse<T>>.]]></returns>
         public async Task<BigCommerceResponse<T>> GetResponseByRelativeUrlAsync<T>(
             string url, string commandParams, string marker, [CallerMemberName] string? callerMethodName = null)
             where T : class
@@ -39,6 +63,15 @@ namespace BigCommerceNET.Services
             return await GetResponseAsync<T>(requestUrl, marker, callerMethodName!);
         }
 
+        /// <summary>
+        /// Gets the response by relative url asynchronously.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="command">The command.</param>
+        /// <param name="commandParams">The command params.</param>
+        /// <param name="marker">The marker.</param>
+        /// <param name="callerMethodName">The caller method name.</param>
+        /// <returns><![CDATA[A Task<BigCommerceResponse<T>>.]]></returns>
         public async Task<BigCommerceResponse<T>> GetResponseByRelativeUrlAsync<T>(
             BigCommerceCommand command, string commandParams, string marker, [CallerMemberName] string? callerMethodName = null)
             where T : class
@@ -47,6 +80,15 @@ namespace BigCommerceNET.Services
             return await GetResponseAsync<T>(requestUrl, marker, callerMethodName!);
         }
 
+        /// <summary>
+        /// Puts the data.
+        /// </summary>
+        /// <param name="command">The command.</param>
+        /// <param name="endpoint">The endpoint.</param>
+        /// <param name="jsonContent">The json content.</param>
+        /// <param name="marker">The marker.</param>
+        /// <param name="callerMethodName">The caller method name.</param>
+        /// <returns>An IBigCommerceRateLimits.</returns>
         public IBigCommerceRateLimits PutData(BigCommerceCommand command, string endpoint, string jsonContent, string marker, [CallerMemberName] string? callerMethodName = null)
         {
             var url = GetUrl(command, endpoint);
@@ -71,6 +113,15 @@ namespace BigCommerceNET.Services
         }
 
 
+        /// <summary>
+        /// Puts the data asynchronously.
+        /// </summary>
+        /// <param name="command">The command.</param>
+        /// <param name="endpoint">The endpoint.</param>
+        /// <param name="jsonContent">The json content.</param>
+        /// <param name="marker">The marker.</param>
+        /// <param name="callerMethodName">The caller method name.</param>
+        /// <returns><![CDATA[A Task<IBigCommerceRateLimits>.]]></returns>
         public async Task<IBigCommerceRateLimits> PutDataAsync(
             BigCommerceCommand command, string endpoint, string jsonContent, string marker, [CallerMemberName] string? callerMethodName = null)
         {
@@ -78,6 +129,14 @@ namespace BigCommerceNET.Services
             return await PutDataAsync(url, jsonContent, marker, callerMethodName);
         }
 
+        /// <summary>
+        /// Puts the data asynchronously.
+        /// </summary>
+        /// <param name="url">The url.</param>
+        /// <param name="jsonContent">The json content.</param>
+        /// <param name="marker">The marker.</param>
+        /// <param name="callerMethodName">The caller method name.</param>
+        /// <returns><![CDATA[A Task<IBigCommerceRateLimits>.]]></returns>
         public async Task<IBigCommerceRateLimits> PutDataAsync(
             string url, string jsonContent, string marker, [CallerMemberName] string? callerMethodName = null)
         {
@@ -101,6 +160,14 @@ namespace BigCommerceNET.Services
             }
         }
 
+        /// <summary>
+        /// Gets the response asynchronously.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="url">The url.</param>
+        /// <param name="marker">The marker.</param>
+        /// <param name="callerMethodName">The caller method name.</param>
+        /// <returns><![CDATA[A Task<BigCommerceResponse<T>>.]]></returns>
         public async Task<BigCommerceResponse<T>> GetResponseAsync<T>(string url, string marker, [CallerMemberName] string? callerMethodName = null) where T : class
         {
             this.LogCallStarted(url, marker, callerMethodName!);
@@ -136,6 +203,10 @@ namespace BigCommerceNET.Services
             }
         }
 
+        /// <summary>
+        /// Creates the http client.
+        /// </summary>
+        /// <returns>A HttpClient.</returns>
         private HttpClient CreateHttpClient()
         {
             var httpClient = new HttpClient();
@@ -158,16 +229,33 @@ namespace BigCommerceNET.Services
             return httpClient;
         }
 
+        /// <summary>
+        /// Gets the url.
+        /// </summary>
+        /// <param name="url">The url.</param>
+        /// <param name="commandParams">The command params.</param>
+        /// <returns>A string.</returns>
         private string GetUrl(string url, string commandParams)
         {
             return string.Concat(url, commandParams);
         }
 
+        /// <summary>
+        /// Gets the url.
+        /// </summary>
+        /// <param name="command">The command.</param>
+        /// <param name="commandParams">The command params.</param>
+        /// <returns>A string.</returns>
         private string GetUrl(BigCommerceCommand command, string commandParams)
         {
             return string.Concat(_host, command.Command, commandParams);
         }
 
+        /// <summary>
+        /// Parses the limits.
+        /// </summary>
+        /// <param name="response">The response.</param>
+        /// <returns>An IBigCommerceRateLimits.</returns>
         private IBigCommerceRateLimits ParseLimits(HttpResponseMessage response)
         {
             // Get X-BC-ApiLimit-Remaining header
@@ -201,6 +289,11 @@ namespace BigCommerceNET.Services
         }
 
 
+        /// <summary>
+        /// Gets the remaining limit.
+        /// </summary>
+        /// <param name="response">The response.</param>
+        /// <returns>A string?.</returns>
         private string? GetRemainingLimit(HttpResponseMessage response)
         {
             if (response.Headers.TryGetValues("X-BC-ApiLimit-Remaining", out var remainingLimitHeader))
@@ -220,6 +313,10 @@ namespace BigCommerceNET.Services
             return null; // Header not found
         }
 
+        /// <summary>
+        /// Creates the authentication header.
+        /// </summary>
+        /// <returns>A string.</returns>
         private string CreateAuthenticationHeader()
         {
             var authInfo = string.Concat(_config.UserName, ":", _config.ApiKey);
@@ -228,6 +325,13 @@ namespace BigCommerceNET.Services
             return string.Concat("Basic ", authInfo);
         }
 
+        /// <summary>
+        /// Resolves the host.
+        /// </summary>
+        /// <param name="config">The config.</param>
+        /// <param name="marker">The marker.</param>
+        /// <param name="callerMethodName">The caller method name.</param>
+        /// <returns>A string.</returns>
         private string ResolveHost(BigCommerceConfig config, string marker, [CallerMemberName] string? callerMethodName = null)
         {
             try
@@ -254,6 +358,11 @@ namespace BigCommerceNET.Services
             }
         }
 
+        /// <summary>
+        /// Gets the timeout token.
+        /// </summary>
+        /// <param name="timeout">The timeout.</param>
+        /// <returns>A CancellationToken.</returns>
         private CancellationToken GetTimeoutToken(int timeout)
         {
             var cancellationTokenSource = new CancellationTokenSource();
@@ -261,6 +370,14 @@ namespace BigCommerceNET.Services
             return cancellationTokenSource.Token;
         }
 
+        /// <summary>
+        /// Log the call started.
+        /// </summary>
+        /// <param name="url">The url.</param>
+        /// <param name="marker">The marker.</param>
+        /// <param name="callerMethodName">The caller method name.</param>
+        /// <param name="httpMethod">The http method.</param>
+        /// <param name="body">The body.</param>
         private void LogCallStarted(string url, string marker, string callerMethodName, HttpMethodEnum httpMethod = HttpMethodEnum.Get, string? body = null)
         {
             BigCommerceLogger.TraceLog(new RequestInfo()
@@ -276,6 +393,16 @@ namespace BigCommerceNET.Services
             });
         }
 
+        /// <summary>
+        /// Log the call ended.
+        /// </summary>
+        /// <param name="url">The url.</param>
+        /// <param name="marker">The marker.</param>
+        /// <param name="callerMethodName">The caller method name.</param>
+        /// <param name="statusCode">The status code.</param>
+        /// <param name="response">The response.</param>
+        /// <param name="remainingCalls">The remaining calls.</param>
+        /// <param name="systemVersion">The system version.</param>
         private void LogCallEnded(string url, string marker, string callerMethodName, string statusCode, string? response, string remainingCalls, string? systemVersion)
         {
             BigCommerceLogger.TraceLog(new ResponseInfo()
@@ -293,6 +420,15 @@ namespace BigCommerceNET.Services
             });
         }
 
+        /// <summary>
+        /// Handle exception and log.
+        /// </summary>
+        /// <param name="url">The url.</param>
+        /// <param name="marker">The marker.</param>
+        /// <param name="callerMethodName">The caller method name.</param>
+        /// <param name="statusCode">The status code.</param>
+        /// <param name="ex">The ex.</param>
+        /// <returns>An Exception.</returns>
         private Exception HandleExceptionAndLog(string url, string marker, string callerMethodName, string statusCode, Exception ex)
         {
             BigCommerceLogger.LogTraceException(new ResponseInfo()
@@ -309,6 +445,15 @@ namespace BigCommerceNET.Services
             return new Exception(string.Format("Marker: '{0}'. Call to url '{1}' failed", marker, url), ex);
         }
 
+        /// <summary>
+        /// Gets the response by relative url.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="url">The url.</param>
+        /// <param name="commandParams">The command params.</param>
+        /// <param name="marker">The marker.</param>
+        /// <param name="callerMethodName">The caller method name.</param>
+        /// <returns><![CDATA[A BigCommerceResponse<T>.]]></returns>
         public BigCommerceResponse<T> GetResponseByRelativeUrl<T>(string url, string commandParams, string marker, [CallerMemberName] string? callerMethodName = null) where T : class
         {
             var requestUrl = this.GetUrl(url, commandParams);
@@ -316,6 +461,15 @@ namespace BigCommerceNET.Services
             return result;
         }
 
+        /// <summary>
+        /// Gets the response by relative url.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="command">The command.</param>
+        /// <param name="commandParams">The command params.</param>
+        /// <param name="marker">The marker.</param>
+        /// <param name="callerMethodName">The caller method name.</param>
+        /// <returns><![CDATA[A BigCommerceResponse<T>.]]></returns>
         public BigCommerceResponse<T> GetResponseByRelativeUrl<T>(BigCommerceCommand command, string commandParams, string marker, [CallerMemberName] string? callerMethodName = null) where T : class
         {
             var requestUrl = this.GetUrl(command, commandParams);
@@ -323,6 +477,14 @@ namespace BigCommerceNET.Services
             return result;
         }
 
+        /// <summary>
+        /// Gets the response.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="url">The url.</param>
+        /// <param name="marker">The marker.</param>
+        /// <param name="callerMethodName">The caller method name.</param>
+        /// <returns><![CDATA[A BigCommerceResponse<T>.]]></returns>
         public BigCommerceResponse<T> GetResponse<T>(string url, string marker, [CallerMemberName] string? callerMethodName = null) where T : class
         {
             LogCallStarted(url, marker, callerMethodName!);
@@ -347,6 +509,16 @@ namespace BigCommerceNET.Services
             }
         }
 
+        /// <summary>
+        /// Parses the response.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="response">The response.</param>
+        /// <param name="marker">The marker.</param>
+        /// <param name="url">The url.</param>
+        /// <param name="callerMethodName">The caller method name.</param>
+        /// <param name="statusCode">The status code.</param>
+        /// <returns><![CDATA[A BigCommerceResponse<T>.]]></returns>
         private BigCommerceResponse<T> ParseResponse<T>(HttpResponseMessage response, string marker, string url, string callerMethodName, HttpStatusCode statusCode) where T : class
         {
             var jsonResponse = response.Content.ReadAsStringAsync().Result;
@@ -373,6 +545,15 @@ namespace BigCommerceNET.Services
             return new BigCommerceResponse<T>(result!, limits);
         }
 
+        /// <summary>
+        /// Parses the response asynchronously.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="response">The response.</param>
+        /// <param name="marker">The marker.</param>
+        /// <param name="url">The url.</param>
+        /// <param name="callerMethodName">The caller method name.</param>
+        /// <returns><![CDATA[A Task<BigCommerceResponse<T>>.]]></returns>
         private async Task<BigCommerceResponse<T>> ParseResponseAsync<T>(HttpResponseMessage response, string marker, string url, string callerMethodName) where T : class
         {
             var jsonResponse = await response.Content.ReadAsStringAsync();

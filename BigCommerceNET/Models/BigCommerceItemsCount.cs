@@ -2,10 +2,16 @@
 
 namespace BigCommerceNET.Models
 {
-	[ DataContract ]
+    /// <summary>
+    /// The big commerce items count.
+    /// </summary>
+    [ DataContract ]
 	sealed class BigCommerceItemsCount
 	{
-		[ DataMember( Name = "count" ) ]
+        /// <summary>
+        /// Gets or Sets the count.
+        /// </summary>
+        [ DataMember( Name = "count" ) ]
 		public int Count { get; set; }
 	}
 }

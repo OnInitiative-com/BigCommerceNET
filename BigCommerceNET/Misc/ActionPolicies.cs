@@ -3,15 +3,27 @@ using Netco.Utils;
 
 namespace BigCommerceNET.Misc
 {
-	public static class ActionPolicies
+    /// <summary>
+    /// The action policies.
+    /// </summary>
+    public static class ActionPolicies
 	{
 #if DEBUG
-		public const int RetryCount = 1;
+        /// <summary>
+        /// The retry count.
+        /// </summary>
+        public const int RetryCount = 1;
 #else
 		public const int RetryCount = 10;
 #endif
-		
-		public static ActionPolicy Submit( string marker, string url )
+
+        /// <summary>
+        /// Submits a <see cref="ActionPolicy"/>.
+        /// </summary>
+        /// <param name="marker">The marker.</param>
+        /// <param name="url">The url.</param>
+        /// <returns>An ActionPolicy.</returns>
+        public static ActionPolicy Submit( string marker, string url )
 		{
 			return ActionPolicy.Handle< Exception >().Retry( RetryCount, ( ex, i ) =>
 			{
@@ -29,7 +41,13 @@ namespace BigCommerceNET.Misc
 			} );
 		}
 
-		public static ActionPolicyAsync SubmitAsync( string marker, string url )
+        /// <summary>
+        /// Submits a <see cref="ActionPolicyAsync"/>. asynchronously.
+        /// </summary>
+        /// <param name="marker">The marker.</param>
+        /// <param name="url">The url.</param>
+        /// <returns>An ActionPolicyAsync.</returns>
+        public static ActionPolicyAsync SubmitAsync( string marker, string url )
 		{
 			return ActionPolicyAsync.Handle< Exception >().RetryAsync( RetryCount, async ( ex, i ) =>
 			{
@@ -47,7 +65,13 @@ namespace BigCommerceNET.Misc
 			} );
 		}
 
-		public static ActionPolicy Get( string marker, string url )
+        /// <summary>
+        /// Gets a <see cref="ActionPolicy"/>.
+        /// </summary>
+        /// <param name="marker">The marker.</param>
+        /// <param name="url">The url.</param>
+        /// <returns>An ActionPolicy.</returns>
+        public static ActionPolicy Get( string marker, string url )
 		{
 			return ActionPolicy.Handle< Exception >().Retry( RetryCount, ( ex, retryAttempt ) => { 
 				var delay = TimeSpan.FromSeconds( 5 + 20 * retryAttempt );
@@ -64,7 +88,13 @@ namespace BigCommerceNET.Misc
 			} );
 		}
 
-		public static ActionPolicyAsync GetAsync( string marker, string url )
+        /// <summary>
+        /// Gets a <see cref="ActionPolicyAsync"/>. asynchronously.
+        /// </summary>
+        /// <param name="marker">The marker.</param>
+        /// <param name="url">The url.</param>
+        /// <returns>An ActionPolicyAsync.</returns>
+        public static ActionPolicyAsync GetAsync( string marker, string url )
 		{
 			return ActionPolicyAsync.Handle< Exception >().RetryAsync( RetryCount, async ( ex, retryAttempt ) => { 
 				var delay = TimeSpan.FromSeconds( 5 + 20 * retryAttempt );
@@ -81,7 +111,14 @@ namespace BigCommerceNET.Misc
 			} );
 		}
 
-		public static void LogRetryAndWait( Exception ex, string marker, string url, int retryAttempt )
+        /// <summary>
+        /// Logs the retry and wait.
+        /// </summary>
+        /// <param name="ex">The ex.</param>
+        /// <param name="marker">The marker.</param>
+        /// <param name="url">The url.</param>
+        /// <param name="retryAttempt">The retry attempt.</param>
+        public static void LogRetryAndWait( Exception ex, string marker, string url, int retryAttempt )
 		{
 			var delay = TimeSpan.FromSeconds( 5 + 20 * retryAttempt );
 			BigCommerceLogger.LogTraceException( new RetryInfo()
@@ -96,7 +133,15 @@ namespace BigCommerceNET.Misc
 			SystemUtil.Sleep( delay );
 		}
 
-		public static async Task LogRetryAndWaitAsync( Exception ex, string marker, string url, int retryAttempt )
+        /// <summary>
+        /// Logs the retry and wait asynchronously.
+        /// </summary>
+        /// <param name="ex">The ex.</param>
+        /// <param name="marker">The marker.</param>
+        /// <param name="url">The url.</param>
+        /// <param name="retryAttempt">The retry attempt.</param>
+        /// <returns>A Task.</returns>
+        public static async Task LogRetryAndWaitAsync( Exception ex, string marker, string url, int retryAttempt )
 		{
 			var delay = TimeSpan.FromSeconds( 5 + 20 * retryAttempt );
 			BigCommerceLogger.LogTraceException( new RetryInfo()

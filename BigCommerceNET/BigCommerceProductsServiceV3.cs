@@ -9,15 +9,29 @@ using ServiceStack;
 
 namespace BigCommerceNET
 {
+    /// <summary>
+    /// The big commerce products service v3.
+    /// </summary>
     sealed class BigCommerceProductsServiceV3 : BigCommerceBaseProductsService, IBigCommerceProductsService
 	{
-		private const string _inventoryTrackingByOption = "variant";
+        /// <summary>
+        /// The inventory tracking by option.
+        /// </summary>
+        private const string _inventoryTrackingByOption = "variant";
 
-		public BigCommerceProductsServiceV3( WebRequestServices services ) : base( services )
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BigCommerceProductsServiceV3"/> class.
+        /// </summary>
+        /// <param name="services">The services.</param>
+        public BigCommerceProductsServiceV3( WebRequestServices services ) : base( services )
 		{
-		}        
+		}
 
         #region Get
+        /// <summary>
+        /// Get the store name.
+        /// </summary>
+        /// <returns>A string.</returns>
         public string GetStoreName()
         {
             var marker = this.GetMarker();
@@ -25,12 +39,20 @@ namespace BigCommerceNET
 
         }
 
+        /// <summary>
+        /// Get the store domain.
+        /// </summary>
+        /// <returns>A string.</returns>
         public string GetStoreDomain()
         {
             var marker = this.GetMarker();
             return base.GetDomain(marker);
 
         }
+        /// <summary>
+        /// Get the store safe URL.
+        /// </summary>
+        /// <returns>A string.</returns>
         public string GetStoreSafeURL()
         {
             var marker = this.GetMarker();
@@ -38,6 +60,11 @@ namespace BigCommerceNET
 
         }
 
+        /// <summary>
+        /// Gets the products.
+        /// </summary>
+        /// <param name="includeExtendedInfo">If true, include extended info.</param>
+        /// <returns><![CDATA[A List<BigCommerceProduct>.]]></returns>
         public List<BigCommerceProduct> GetProducts(bool includeExtendedInfo)
         {
             var mainEndpoint = "?include=variants,images";
@@ -142,6 +169,12 @@ namespace BigCommerceNET
             return products;
         }
 
+        /// <summary>
+        /// Gets the products asynchronously.
+        /// </summary>
+        /// <param name="token">The token.</param>
+        /// <param name="includeExtendedInfo">If true, include extended info.</param>
+        /// <returns><![CDATA[A Task<List<BigCommerceProduct>>.]]></returns>
         public async Task<List<BigCommerceProduct>> GetProductsAsync(CancellationToken token, bool includeExtendedInfo)
 		{
 			var mainEndpoint = "?include=variants,images";
@@ -249,6 +282,10 @@ namespace BigCommerceNET
 
         #region Update
 
+        /// <summary>
+        /// Updates the product options.
+        /// </summary>
+        /// <param name="productOptions">The product options.</param>
         public void UpdateProductOptions(List<BigCommerceProductOption> productOptions)
         {
             var marker = this.GetMarker();
@@ -264,6 +301,10 @@ namespace BigCommerceNET
             }
         }
 
+        /// <summary>
+        /// Updates the products.
+        /// </summary>
+        /// <param name="products">The products.</param>
         public void UpdateProducts(List<BigCommerceProduct> products)
         {
             var marker = this.GetMarker();
@@ -279,6 +320,12 @@ namespace BigCommerceNET
             }
         }
 
+        /// <summary>
+        /// Updates the product options asynchronously.
+        /// </summary>
+        /// <param name="productOptions">The product options.</param>
+        /// <param name="token">The token.</param>
+        /// <returns>A Task.</returns>
         public async Task UpdateProductOptionsAsync( List< BigCommerceProductOption > productOptions, CancellationToken token )
 		{
 			var marker = this.GetMarker();
@@ -294,7 +341,13 @@ namespace BigCommerceNET
 			} );
 		}
 
-		public async Task UpdateProductsAsync( List< BigCommerceProduct > products, CancellationToken token )
+        /// <summary>
+        /// Updates the products asynchronously.
+        /// </summary>
+        /// <param name="products">The products.</param>
+        /// <param name="token">The token.</param>
+        /// <returns>A Task.</returns>
+        public async Task UpdateProductsAsync( List< BigCommerceProduct > products, CancellationToken token )
 		{
 			var marker = this.GetMarker();
 
@@ -310,10 +363,15 @@ namespace BigCommerceNET
 			} );
 		}
 
-		#endregion
+        #endregion
 
-		#region Misc
-		private InventoryTrackingEnum ToCompatibleWithV2InventoryTrackingEnum( string inventoryTracking )
+        #region Misc
+        /// <summary>
+        /// Converts to compatible with v2 inventory tracking enum.
+        /// </summary>
+        /// <param name="inventoryTracking">The inventory tracking.</param>
+        /// <returns>An InventoryTrackingEnum.</returns>
+        private InventoryTrackingEnum ToCompatibleWithV2InventoryTrackingEnum( string inventoryTracking )
 		{
 			if ( string.IsNullOrWhiteSpace( inventoryTracking ) )
 			{

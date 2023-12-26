@@ -1,18 +1,36 @@
 ﻿namespace BigCommerceNET.Models.Throttling
 {
-	internal class BigCommerceLimits: IBigCommerceRateLimits
+    /// <summary>
+    /// The big commerce limits.
+    /// </summary>
+    internal class BigCommerceLimits: IBigCommerceRateLimits
 	{
-		// 2018-10-11: https://support.bigcommerce.com/articles/Public/Platform-Limits
-		// Trial Stores, Standard and Plus plans : 20000 per hour
-		// Pro plans : 60000 per hour
-		// Enterprise : Unlimited
-		private const int UnlimitCnt = 60001;
-		public int CallsRemaining{ get; private set; }
+        // 2018-10-11: https://support.bigcommerce.com/articles/Public/Platform-Limits
+        // Trial Stores, Standard and Plus plans : 20000 per hour
+        // Pro plans : 60000 per hour
+        // Enterprise : Unlimited
+        /// <summary>
+        /// The unlimit cnt.
+        /// </summary>
+        private const int UnlimitCnt = 60001;
+        /// <summary>
+        /// Gets the calls remaining.
+        /// </summary>
+        public int CallsRemaining{ get; private set; }
 
-		public int LimitRequestsLeft{ get; private set; }
-		public int LimitTimeResetMs{ get; private set; }
+        /// <summary>
+        /// Gets the limit requests left.
+        /// </summary>
+        public int LimitRequestsLeft{ get; private set; }
+        /// <summary>
+        /// Gets the limit time reset ms.
+        /// </summary>
+        public int LimitTimeResetMs{ get; private set; }
 
-		public bool IsUnlimitedCallsCount
+        /// <summary>
+        /// Gets a value indicating whether unlimited calls is count.
+        /// </summary>
+        public bool IsUnlimitedCallsCount
 		{
 			get
 			{
@@ -26,7 +44,13 @@
 			}
 		}
 
-		public BigCommerceLimits( int callsRemaining = -1, int limitRequestsLeft = -1, int limitTimeResetMs = -1 )
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BigCommerceLimits"/> class.
+        /// </summary>
+        /// <param name="callsRemaining">The calls remaining.</param>
+        /// <param name="limitRequestsLeft">The limit requests left.</param>
+        /// <param name="limitTimeResetMs">The limit time reset ms.</param>
+        public BigCommerceLimits( int callsRemaining = -1, int limitRequestsLeft = -1, int limitTimeResetMs = -1 )
 		{
 			this.CallsRemaining = callsRemaining;
 			this.LimitRequestsLeft = limitRequestsLeft;

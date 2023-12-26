@@ -3,28 +3,52 @@ using System.Runtime.Serialization;
 
 namespace BigCommerceNET.Models.Order
 {
-	[ DataContract ]
+    /// <summary>
+    /// The big commerce order product.
+    /// </summary>
+    [ DataContract ]
 	public class BigCommerceOrderProduct : BigCommerceObjectBase
 	{
-		[ DataMember( Name = "name" ) ]
+        /// <summary>
+        /// Gets or Sets the name.
+        /// </summary>
+        [ DataMember( Name = "name" ) ]
 		public string? Name { get; set; }
 
-		[ DataMember( Name = "sku" ) ]
+        /// <summary>
+        /// Gets or Sets the sku.
+        /// </summary>
+        [ DataMember( Name = "sku" ) ]
 		public string? Sku { get; set; }
 
-		[ DataMember( Name = "quantity" ) ]
+        /// <summary>
+        /// Gets or Sets the quantity.
+        /// </summary>
+        [ DataMember( Name = "quantity" ) ]
 		public int Quantity { get; set; }
 
-		[ DataMember( Name = "price_inc_tax" ) ]
+        /// <summary>
+        /// Gets or Sets the price inc tax.
+        /// </summary>
+        [ DataMember( Name = "price_inc_tax" ) ]
 		public string? PriceIncTax{ get; set; }
 
-		[ DataMember( Name = "price_ex_tax" ) ]
+        /// <summary>
+        /// Gets or Sets the price excl tax.
+        /// </summary>
+        [ DataMember( Name = "price_ex_tax" ) ]
 		public string? PriceExclTax{ get; set; }
 
-		[ DataMember( Name = "base_price" ) ]
+        /// <summary>
+        /// Gets or Sets the base price.
+        /// </summary>
+        [ DataMember( Name = "base_price" ) ]
 		public string? BasePrice{ get; set; }
 
-		public decimal Tax
+        /// <summary>
+        /// Gets the tax.
+        /// </summary>
+        public decimal Tax
 		{
 			get
 			{

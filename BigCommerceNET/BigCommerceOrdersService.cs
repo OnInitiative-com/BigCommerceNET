@@ -12,11 +12,24 @@ using Netco.Extensions;
 
 namespace BigCommerceNET
 {
+    /// <summary>
+    /// The big commerce orders service.
+    /// </summary>
     public class BigCommerceOrdersService : BigCommerceServiceBase, IBigCommerceOrdersService
     {
+        /// <summary>
+        /// The web request services.
+        /// </summary>
         private readonly WebRequestServices _webRequestServices;
+        /// <summary>
+        /// The api version.
+        /// </summary>
         private readonly APIVersion _apiVersion;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BigCommerceOrdersService"/> class.
+        /// </summary>
+        /// <param name="config">The config.</param>
         public BigCommerceOrdersService(BigCommerceConfig config)
         {           
             this._webRequestServices = new WebRequestServices(config, this.GetMarker());
@@ -24,16 +37,35 @@ namespace BigCommerceNET
         }
 
         #region Orders
+        /// <summary>
+        /// Gets the orders.
+        /// </summary>
+        /// <param name="dateFrom">The date from.</param>
+        /// <param name="dateTo">The date to.</param>
+        /// <returns><![CDATA[A List<BigCommerceOrder>.]]></returns>
         public List<BigCommerceOrder> GetOrders(DateTime dateFrom, DateTime dateTo)
         {
             return this._apiVersion == APIVersion.V2 ? this.GetOrdersForV2(dateFrom, dateTo) : this.GetOrdersForV3(dateFrom, dateTo);
         }
 
+        /// <summary>
+        /// Gets the orders asynchronously.
+        /// </summary>
+        /// <param name="dateFrom">The date from.</param>
+        /// <param name="dateTo">The date to.</param>
+        /// <param name="token">The token.</param>
+        /// <returns><![CDATA[A Task<List<BigCommerceOrder>>.]]></returns>
         public Task<List<BigCommerceOrder>> GetOrdersAsync(DateTime dateFrom, DateTime dateTo, CancellationToken token)
         {
             return this._apiVersion == APIVersion.V2 ? this.GetOrdersForV2Async(dateFrom, dateTo, token) : this.GetOrdersForV3Async(dateFrom, dateTo, token);
         }
 
+        /// <summary>
+        /// Gets the orders for v2.
+        /// </summary>
+        /// <param name="dateFrom">The date from.</param>
+        /// <param name="dateTo">The date to.</param>
+        /// <returns><![CDATA[A List<BigCommerceOrder>.]]></returns>
         public List<BigCommerceOrder> GetOrdersForV2(DateTime dateFrom, DateTime dateTo)
         {
             var mainEndpoint = ParamsBuilder.CreateOrdersParams(dateFrom, dateTo);
@@ -61,6 +93,12 @@ namespace BigCommerceNET
             return orders;
         }
 
+        /// <summary>
+        /// Gets the orders for v3.
+        /// </summary>
+        /// <param name="dateFrom">The date from.</param>
+        /// <param name="dateTo">The date to.</param>
+        /// <returns><![CDATA[A List<BigCommerceOrder>.]]></returns>
         public List<BigCommerceOrder> GetOrdersForV3(DateTime dateFrom, DateTime dateTo)
         {
             var mainEndpoint = ParamsBuilder.CreateOrdersParams(dateFrom, dateTo);
@@ -88,6 +126,13 @@ namespace BigCommerceNET
             return orders;
         }
 
+        /// <summary>
+        /// Gets the orders for v2 asynchronously.
+        /// </summary>
+        /// <param name="dateFrom">The date from.</param>
+        /// <param name="dateTo">The date to.</param>
+        /// <param name="token">The token.</param>
+        /// <returns><![CDATA[A Task<List<BigCommerceOrder>>.]]></returns>
         private async Task<List<BigCommerceOrder>> GetOrdersForV2Async(DateTime dateFrom, DateTime dateTo, CancellationToken token)
         {
             var mainEndpoint = ParamsBuilder.CreateOrdersParams(dateFrom, dateTo);
@@ -115,6 +160,13 @@ namespace BigCommerceNET
             return orders;
         }
 
+        /// <summary>
+        /// Gets the orders for v3 asynchronously.
+        /// </summary>
+        /// <param name="dateFrom">The date from.</param>
+        /// <param name="dateTo">The date to.</param>
+        /// <param name="token">The token.</param>
+        /// <returns><![CDATA[A Task<List<BigCommerceOrder>>.]]></returns>
         private async Task<List<BigCommerceOrder>> GetOrdersForV3Async(DateTime dateFrom, DateTime dateTo, CancellationToken token)
         {
             var mainEndpoint = ParamsBuilder.CreateOrdersParams(dateFrom, dateTo);
@@ -145,6 +197,11 @@ namespace BigCommerceNET
         #endregion
 
         #region Order products
+        /// <summary>
+        /// Gets the orders products.
+        /// </summary>
+        /// <param name="orders">The orders.</param>
+        /// <param name="marker">The marker.</param>
         private void GetOrdersProducts(IEnumerable<BigCommerceOrder> orders, string marker)
         {
             foreach (var order in orders)
@@ -168,6 +225,14 @@ namespace BigCommerceNET
             }
         }
 
+        /// <summary>
+        /// Gets the orders products asynchronously.
+        /// </summary>
+        /// <param name="orders">The orders.</param>
+        /// <param name="isUnlimit">If true, is unlimit.</param>
+        /// <param name="token">The token.</param>
+        /// <param name="marker">The marker.</param>
+        /// <returns>A Task.</returns>
         private async Task GetOrdersProductsAsync(IEnumerable<BigCommerceOrder> orders, bool isUnlimit, CancellationToken token, string marker)
         {
             var threadCount = isUnlimit ? MaxThreadsCount : 1;
@@ -194,6 +259,11 @@ namespace BigCommerceNET
         #endregion
 
         #region Order Coupons
+        /// <summary>
+        /// Gets the orders coupons.
+        /// </summary>
+        /// <param name="orders">The orders.</param>
+        /// <param name="marker">The marker.</param>
         private void GetOrdersCoupons(IEnumerable<BigCommerceOrder> orders, string marker)
         {
             foreach (var order in orders)
@@ -217,6 +287,14 @@ namespace BigCommerceNET
             }
         }
 
+        /// <summary>
+        /// Gets the orders coupons asynchronously.
+        /// </summary>
+        /// <param name="orders">The orders.</param>
+        /// <param name="isUnlimit">If true, is unlimit.</param>
+        /// <param name="token">The token.</param>
+        /// <param name="marker">The marker.</param>
+        /// <returns>A Task.</returns>
         private async Task GetOrdersCouponsAsync(IEnumerable<BigCommerceOrder> orders, bool isUnlimit, CancellationToken token, string marker)
         {
             var threadCount = isUnlimit ? MaxThreadsCount : 1;
@@ -243,6 +321,11 @@ namespace BigCommerceNET
         #endregion
 
         #region ShippingAddress
+        /// <summary>
+        /// Gets the orders shipping addresses.
+        /// </summary>
+        /// <param name="orders">The orders.</param>
+        /// <param name="marker">The marker.</param>
         private void GetOrdersShippingAddresses(IEnumerable<BigCommerceOrder> orders, string marker)
         {
             foreach (var order in orders)
@@ -257,6 +340,14 @@ namespace BigCommerceNET
             }
         }
 
+        /// <summary>
+        /// Gets the orders shipping addresses asynchronously.
+        /// </summary>
+        /// <param name="orders">The orders.</param>
+        /// <param name="isUnlimit">If true, is unlimit.</param>
+        /// <param name="token">The token.</param>
+        /// <param name="marker">The marker.</param>
+        /// <returns>A Task.</returns>
         private async Task GetOrdersShippingAddressesAsync(IEnumerable<BigCommerceOrder> orders, bool isUnlimit, CancellationToken token, string marker)
         {
             var threadCount = isUnlimit ? MaxThreadsCount : 1;

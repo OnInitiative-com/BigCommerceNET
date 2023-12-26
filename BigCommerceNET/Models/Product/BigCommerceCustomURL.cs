@@ -3,13 +3,22 @@ using System.Runtime.Serialization;
 
 namespace BigCommerceNET.Models.Product
 {
-	[ DataContract ]
+    /// <summary>
+    /// The big commerce custom URL.
+    /// </summary>
+    [ DataContract ]
 	public class BigCommerceCustomURL
 	{
-		[ DataMember( Name = "is_customized") ]
+        /// <summary>
+        /// Gets or Sets a value indicating whether url standard.
+        /// </summary>
+        [ DataMember( Name = "is_customized") ]
 		public bool UrlStandard{ get; set; }
 
-		[ DataMember( Name = "url") ]
+        /// <summary>
+        /// Gets or Sets the product URL.
+        /// </summary>
+        [ DataMember( Name = "url") ]
 		public string? ProductURL { get; set; }
 	}
 }
