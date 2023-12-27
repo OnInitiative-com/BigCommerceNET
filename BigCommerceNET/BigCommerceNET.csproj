@@ -20,6 +20,8 @@
     <Version>0.11.2</Version>
     <Company>ON INITIATIVE LLC</Company>
     <Authors>ON INITIATIVE LLC</Authors>
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	<DocumentationFile>C:\Users\jalug\source\repos\BigCommerceNET\BigCommerceNET\bin\Debug\net8.0\BigCommerceNET.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
