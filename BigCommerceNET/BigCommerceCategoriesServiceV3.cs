@@ -6,15 +6,26 @@ using Netco.ActionPolicyServices;
 
 namespace BigCommerceNET
 {
+    /// <summary>
+    /// The big commerce categories service v3.
+    /// </summary>
     sealed class BigCommerceCategoriesServiceV3 : BigCommerceBaseCategoriesService, IBigCommerceCategoriesService
 	{
-		
-		public BigCommerceCategoriesServiceV3( WebRequestServices services ) : base( services )
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BigCommerceCategoriesServiceV3"/> class.
+        /// </summary>
+        /// <param name="services">The services.</param>
+        public BigCommerceCategoriesServiceV3( WebRequestServices services ) : base( services )
 		{
 		}
 
         #region Get		
 
+        /// <summary>
+        /// Gets the categories.
+        /// </summary>
+        /// <returns><![CDATA[A List<BigCommerceCategory>.]]></returns>
         public List<BigCommerceCategory> GetCategories()
         {
             var categories = new List<BigCommerceCategory>();
@@ -67,6 +78,11 @@ namespace BigCommerceNET
             return categories;
         }
 
+        /// <summary>
+        /// Gets the categories asynchronously.
+        /// </summary>
+        /// <param name="token">The token.</param>
+        /// <returns><![CDATA[A Task<List<BigCommerceCategory>>.]]></returns>
         public async Task<List<BigCommerceCategory>> GetCategoriesAsync(CancellationToken token)
 		{			
 			var categories = new List<BigCommerceCategory>();

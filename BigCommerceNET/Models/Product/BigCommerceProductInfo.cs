@@ -3,73 +3,142 @@ using System.Runtime.Serialization;
 
 namespace BigCommerceNET.Models.Product
 {
-	[ DataContract ]
+    /// <summary>
+    /// The big commerce product info.
+    /// </summary>
+    [ DataContract ]
 	public class BigCommerceProductInfo
 	{
-		[ DataMember( Name = "id" ) ]
+        /// <summary>
+        /// Gets or Sets the id.
+        /// </summary>
+        [ DataMember( Name = "id" ) ]
 		public int? Id{ get; set; }
 
-		[ DataMember( Name = "name" ) ]
+        /// <summary>
+        /// Gets or Sets the name.
+        /// </summary>
+        [ DataMember( Name = "name" ) ]
 		public string? Name{ get; set; }
 
-		[DataMember(Name = "availability")]
+        /// <summary>
+        /// Gets or Sets the availability.
+        /// </summary>
+        [DataMember(Name = "availability")]
 		public string? Availability { get; set; }  //Possible values: available, disabled, preorder
 
-		[DataMember(Name = "condition")]
+        /// <summary>
+        /// Gets or Sets the condition.
+        /// </summary>
+        [DataMember(Name = "condition")]
 		public string? Condition { get; set; } //Possible values: New, Used, Refurbished
 
-		[ DataMember( Name = "sku" ) ]
+        /// <summary>
+        /// Gets or Sets the sku.
+        /// </summary>
+        [ DataMember( Name = "sku" ) ]
 		public string? Sku{ get; set; }
 
-		[ DataMember( Name = "upc" ) ]
+        /// <summary>
+        /// Gets or Sets the upc.
+        /// </summary>
+        [ DataMember( Name = "upc" ) ]
 		public string? Upc{ get; set; }
 
-		[ DataMember( Name = "description" ) ]
+        /// <summary>
+        /// Gets or Sets the description.
+        /// </summary>
+        [ DataMember( Name = "description" ) ]
 		public string? Description{ get; set; }
 
-		[DataMember(Name = "price")]
+        /// <summary>
+        /// Gets or Sets the price.
+        /// </summary>
+        [DataMember(Name = "price")]
 		public decimal? Price { get; set; }
 
-		[ DataMember( Name = "is_visible") ]
+        /// <summary>
+        /// Gets or Sets a value indicating whether is visible.
+        /// </summary>
+        [ DataMember( Name = "is_visible") ]
 		public bool IsVisible { get; set; }
 
-		[DataMember(Name = "type")]
+        /// <summary>
+        /// Gets or Sets the type.
+        /// </summary>
+        [DataMember(Name = "type")]
 		public string? Type { get; set; }  //One of: "physical" - a physical stock unit, "digital" - a digital download.
 
-		[ DataMember( Name = "sale_price" ) ]
+        /// <summary>
+        /// Gets or Sets the sale price.
+        /// </summary>
+        [ DataMember( Name = "sale_price" ) ]
 		public decimal? SalePrice{ get; set; }
 
-		[ DataMember( Name = "retail_price" ) ]
+        /// <summary>
+        /// Gets or Sets the retail price.
+        /// </summary>
+        [ DataMember( Name = "retail_price" ) ]
 		public decimal? RetailPrice{ get; set; }
 
-		[ DataMember( Name = "cost_price" ) ]
+        /// <summary>
+        /// Gets or Sets the cost price.
+        /// </summary>
+        [ DataMember( Name = "cost_price" ) ]
 		public decimal? CostPrice{ get; set; }
 
-		[ DataMember( Name = "weight" ) ]
+        /// <summary>
+        /// Gets or Sets the weight.
+        /// </summary>
+        [ DataMember( Name = "weight" ) ]
 		public decimal? Weight{ get; set; }
 
-		[ DataMember( Name = "brand_id" ) ]
+        /// <summary>
+        /// Gets or Sets the brand id.
+        /// </summary>
+        [ DataMember( Name = "brand_id" ) ]
 		public int? BrandId{ get; set; }
 
-		[ DataMember( Name = "images" ) ]
+        /// <summary>
+        /// Gets or Sets the images.
+        /// </summary>
+        [ DataMember( Name = "images" ) ]
 		public List<BigCommerceImage>? Images{ get; set; }
 
-		[DataMember(Name = "categories")]
+        /// <summary>
+        /// Gets or Sets the categories.
+        /// </summary>
+        [DataMember(Name = "categories")]
 		public int[]? Categories { get; set; }
 
-		[DataMember(Name = "custom_url")]
+        /// <summary>
+        /// Gets or Sets the product URL.
+        /// </summary>
+        [DataMember(Name = "custom_url")]
 		public BigCommerceCustomURL? Product_URL { get; set; }
 
-		[ DataMember( Name = "variants" ) ]
+        /// <summary>
+        /// Gets or Sets the variants.
+        /// </summary>
+        [ DataMember( Name = "variants" ) ]
 		public List<BigCommerceVariant>? Variants{ get; set; }
 
-		[ DataMember( Name = "inventory_tracking" ) ]
+        /// <summary>
+        /// Gets or Sets the inventory tracking.
+        /// </summary>
+        [ DataMember( Name = "inventory_tracking" ) ]
 		public string? InventoryTracking{ get; set; }
 
-		[ DataMember( Name = "inventory_level" ) ]
+        /// <summary>
+        /// Gets or Sets the quantity.
+        /// </summary>
+        [ DataMember( Name = "inventory_level" ) ]
 		public string? Quantity{ get; set; }
 
-		public BigCommerceProductInfo()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BigCommerceProductInfo"/> class.
+        /// </summary>
+        public BigCommerceProductInfo()
 		{
 			this.Images = new List< BigCommerceImage >();
 			this.Variants = new List< BigCommerceVariant >();

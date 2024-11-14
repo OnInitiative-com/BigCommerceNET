@@ -2,22 +2,40 @@
 
 namespace BigCommerceNET.Models.Address
 {
-	[ DataContract ]
+    /// <summary>
+    /// The big commerce billing address.
+    /// </summary>
+    [ DataContract ]
 	public class BigCommerceBillingAddress
 	{
-		[ DataMember( Name = "first_name" ) ]
+        /// <summary>
+        /// Gets or Sets the first name.
+        /// </summary>
+        [ DataMember( Name = "first_name" ) ]
 		public string? FirstName { get; set; }
 
-		[ DataMember( Name = "last_name" ) ]
+        /// <summary>
+        /// Gets or Sets the last name.
+        /// </summary>
+        [ DataMember( Name = "last_name" ) ]
 		public string? LastName { get; set; }
 
-		[ DataMember( Name = "company" ) ]
+        /// <summary>
+        /// Gets or Sets the company.
+        /// </summary>
+        [ DataMember( Name = "company" ) ]
 		public string? Company { get; set; }
 
-		[ DataMember( Name = "phone" ) ]
+        /// <summary>
+        /// Gets or Sets the phone.
+        /// </summary>
+        [ DataMember( Name = "phone" ) ]
 		public string? Phone { get; set; }
 
-		[ DataMember( Name = "email" ) ]
+        /// <summary>
+        /// Gets or Sets the email.
+        /// </summary>
+        [ DataMember( Name = "email" ) ]
 		public string? Email { get; set; }
 	}
 }

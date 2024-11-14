@@ -2,13 +2,22 @@
 
 namespace BigCommerceNET.Models
 {
-	[ DataContract ]
+    /// <summary>
+    /// The big commerce reference object.
+    /// </summary>
+    [ DataContract ]
 	public sealed class BigCommerceReferenceObject
 	{
-		[ DataMember( Name = "url" ) ]
+        /// <summary>
+        /// Gets or Sets the url.
+        /// </summary>
+        [ DataMember( Name = "url" ) ]
 		public string? Url { get; set; }
 
-		[ DataMember( Name = "resource" ) ]
+        /// <summary>
+        /// Gets or Sets the resource.
+        /// </summary>
+        [ DataMember( Name = "resource" ) ]
 		public string? Resource { get; set; }
 	}
 }

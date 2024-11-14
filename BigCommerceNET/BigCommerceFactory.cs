@@ -4,21 +4,52 @@ using System;
 
 namespace BigCommerceNET
 {
-	public interface IBigCommerceFactory
+    /// <summary>
+    /// The big commerce factory interface.
+    /// </summary>
+    public interface IBigCommerceFactory
 	{
-		IBigCommerceOrdersService CreateOrdersService( BigCommerceConfig config );
-		IBigCommerceProductsService CreateProductsService( BigCommerceConfig config );
-		IBigCommerceCategoriesService CreateCategoriesService(BigCommerceConfig config);
+        /// <summary>
+        /// Creates the orders service.
+        /// </summary>
+        /// <param name="config">The config.</param>
+        /// <returns>An IBigCommerceOrdersService.</returns>
+        IBigCommerceOrdersService CreateOrdersService( BigCommerceConfig config );
+        /// <summary>
+        /// Creates the products service.
+        /// </summary>
+        /// <param name="config">The config.</param>
+        /// <returns>An IBigCommerceProductsService.</returns>
+        IBigCommerceProductsService CreateProductsService( BigCommerceConfig config );
+        /// <summary>
+        /// Creates the categories service.
+        /// </summary>
+        /// <param name="config">The config.</param>
+        /// <returns>An IBigCommerceCategoriesService.</returns>
+        IBigCommerceCategoriesService CreateCategoriesService(BigCommerceConfig config);
 	}
 
-	public sealed class BigCommerceFactory : IBigCommerceFactory
+    /// <summary>
+    /// The big commerce factory.
+    /// </summary>
+    public sealed class BigCommerceFactory : IBigCommerceFactory
 	{
-		public IBigCommerceOrdersService CreateOrdersService( BigCommerceConfig config )
+        /// <summary>
+        /// Creates the orders service.
+        /// </summary>
+        /// <param name="config">The config.</param>
+        /// <returns>An IBigCommerceOrdersService.</returns>
+        public IBigCommerceOrdersService CreateOrdersService( BigCommerceConfig config )
 		{
 			return new BigCommerceOrdersService( config );
 		}
 
-		public IBigCommerceCategoriesService CreateCategoriesService(BigCommerceConfig config)
+        /// <summary>
+        /// Creates the categories service.
+        /// </summary>
+        /// <param name="config">The config.</param>
+        /// <returns>An IBigCommerceCategoriesService.</returns>
+        public IBigCommerceCategoriesService CreateCategoriesService(BigCommerceConfig config)
 		{
 			var apiVersion = config.GetAPIVersion();
 			var marker = Guid.NewGuid().ToString();
@@ -27,7 +58,12 @@ namespace BigCommerceNET
 			return new BigCommerceCategoriesServiceV3(services);
 		}
 
-		public IBigCommerceProductsService CreateProductsService( BigCommerceConfig config )
+        /// <summary>
+        /// Creates the products service.
+        /// </summary>
+        /// <param name="config">The config.</param>
+        /// <returns>An IBigCommerceProductsService.</returns>
+        public IBigCommerceProductsService CreateProductsService( BigCommerceConfig config )
 		{
 			var apiVersion = config.GetAPIVersion();
 			var marker = Guid.NewGuid().ToString();

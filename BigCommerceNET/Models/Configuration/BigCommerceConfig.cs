@@ -3,22 +3,61 @@ using System.Collections.Generic;
 
 namespace BigCommerceNET.Models.Configuration
 {
-	public sealed class BigCommerceConfig
+    /// <summary>
+    /// The big commerce config.
+    /// </summary>
+    public sealed class BigCommerceConfig
 	{
-		public string? NativeHost{ get; private set; }
-		public string? CustomHost{ get; private set; }
-		public string? ShopName{ get; private set; }
-		public string? UserName{ get; private set; }
-		public string? ApiKey{ get; private set; }
+        /// <summary>
+        /// Gets the native host.
+        /// </summary>
+        public string? NativeHost{ get; private set; }
+        /// <summary>
+        /// Gets the custom host.
+        /// </summary>
+        public string? CustomHost{ get; private set; }
+        /// <summary>
+        /// Gets the shop name.
+        /// </summary>
+        public string? ShopName{ get; private set; }
+        /// <summary>
+        /// Gets the user name.
+        /// </summary>
+        public string? UserName{ get; private set; }
+        /// <summary>
+        /// Gets the api key.
+        /// </summary>
+        public string? ApiKey{ get; private set; }
 
-		public string? ClientId{ get; private set; }
-		public string? ClientSecret{ get; private set; }
-		public string? Token{ get; private set; }
+        /// <summary>
+        /// Gets the client id.
+        /// </summary>
+        public string? ClientId{ get; private set; }
+        /// <summary>
+        /// Gets the client secret.
+        /// </summary>
+        public string? ClientSecret{ get; private set; }
+        /// <summary>
+        /// Gets the token.
+        /// </summary>
+        public string? Token{ get; private set; }
 
-		public long? TenantId { get; set; }
-		public long? ChannelAccountId { get; set; }
+        /// <summary>
+        /// Gets or Sets the tenant id.
+        /// </summary>
+        public long? TenantId { get; set; }
+        /// <summary>
+        /// Gets or Sets the channel account id.
+        /// </summary>
+        public long? ChannelAccountId { get; set; }
 
-		public BigCommerceConfig( string shopName, string userName, string apiKey )
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BigCommerceConfig"/> class.
+        /// </summary>
+        /// <param name="shopName">The shop name.</param>
+        /// <param name="userName">The user name.</param>
+        /// <param name="apiKey">The api key.</param>
+        public BigCommerceConfig( string shopName, string userName, string apiKey )
 		{
 			if (!String.IsNullOrEmpty(shopName) && !String.IsNullOrEmpty(userName) && !String.IsNullOrEmpty(apiKey))
 			{
@@ -39,7 +78,14 @@ namespace BigCommerceNET.Models.Configuration
 
 		}
 
-		public BigCommerceConfig( string shopName, string clientId, string clientSecret, string token )
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BigCommerceConfig"/> class.
+        /// </summary>
+        /// <param name="shopName">The shop name.</param>
+        /// <param name="clientId">The client id.</param>
+        /// <param name="clientSecret">The client secret.</param>
+        /// <param name="token">The token.</param>
+        public BigCommerceConfig( string shopName, string clientId, string clientSecret, string token )
 		{			
 
 			if (!String.IsNullOrEmpty(shopName) && !String.IsNullOrEmpty(clientId) && !String.IsNullOrEmpty(clientSecret)
@@ -59,12 +105,21 @@ namespace BigCommerceNET.Models.Configuration
 			}
 		}
 
-		public APIVersion GetAPIVersion()
+        /// <summary>
+        /// Gets the API version.
+        /// </summary>
+        /// <returns>An APIVersion.</returns>
+        public APIVersion GetAPIVersion()
 		{
 			return string.IsNullOrEmpty( this.ClientId ) ? APIVersion.V2 : APIVersion.V3;
 		}
 
-		private Tuple< string, string > GetDomainAndShopName( string shopName )
+        /// <summary>
+        /// Gets the domain and shop name.
+        /// </summary>
+        /// <param name="shopName">The shop name.</param>
+        /// <returns><![CDATA[A Tuple< string, string >.]]></returns>
+        private Tuple< string, string > GetDomainAndShopName( string shopName )
 		{
 			var lastIndexPoint = shopName.LastIndexOf( '.' );
 			if( lastIndexPoint == -1 )
@@ -77,7 +132,10 @@ namespace BigCommerceNET.Models.Configuration
 			return new Tuple< string, string >( ".com", shopName );
 		}
 
-		private readonly List< string > _existDomains = new List< string >
+        /// <summary>
+        /// exist domains.
+        /// </summary>
+        private readonly List< string > _existDomains = new List< string >
 		{
 			".aero",
 			".asia",
@@ -106,7 +164,10 @@ namespace BigCommerceNET.Models.Configuration
 		};
 	}
 
-	public enum APIVersion
+    /// <summary>
+    /// The API version.
+    /// </summary>
+    public enum APIVersion
 	{
 		V2 = 0,
 		V3 = 1

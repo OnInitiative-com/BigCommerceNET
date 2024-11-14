@@ -1,12 +1,27 @@
 ﻿namespace BigCommerceNET.Models.Throttling
 {
-	public interface IBigCommerceRateLimits
+    /// <summary>
+    /// The big commerce rate limits interface.
+    /// </summary>
+    public interface IBigCommerceRateLimits
 	{
-		int CallsRemaining{ get; }
+        /// <summary>
+        /// Gets the calls remaining.
+        /// </summary>
+        int CallsRemaining{ get; }
 
-		int LimitRequestsLeft{ get; }
-		int LimitTimeResetMs{ get; }
+        /// <summary>
+        /// Gets the limit requests left.
+        /// </summary>
+        int LimitRequestsLeft{ get; }
+        /// <summary>
+        /// Gets the limit time reset ms.
+        /// </summary>
+        int LimitTimeResetMs{ get; }
 
-		bool IsUnlimitedCallsCount{ get; }
+        /// <summary>
+        /// Gets a value indicating whether unlimited calls is count.
+        /// </summary>
+        bool IsUnlimitedCallsCount{ get; }
 	}
 }

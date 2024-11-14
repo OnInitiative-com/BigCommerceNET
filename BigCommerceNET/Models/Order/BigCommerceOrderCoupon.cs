@@ -3,18 +3,33 @@ using System.Runtime.Serialization;
 
 namespace BigCommerceNET.Models.Order
 {
-	[ DataContract ]
+    /// <summary>
+    /// The big commerce order coupon.
+    /// </summary>
+    [ DataContract ]
 	public class BigCommerceOrderCoupon : BigCommerceObjectBase
 	{
-		[ DataMember( Name = "code" ) ]
+        /// <summary>
+        /// Gets or Sets the code.
+        /// </summary>
+        [ DataMember( Name = "code" ) ]
 		public string? Code { get; set; }
 
-		[ DataMember( Name = "type" ) ]
+        /// <summary>
+        /// Gets or Sets the type.
+        /// </summary>
+        [ DataMember( Name = "type" ) ]
 		public string? Type { get; set; }
 
-		[ DataMember( Name = "discount" ) ]
+        /// <summary>
+        /// Gets or Sets the discount value.
+        /// </summary>
+        [ DataMember( Name = "discount" ) ]
 		public string? DiscountValue { get; set; }
-		public decimal Discount
+        /// <summary>
+        /// Gets the discount.
+        /// </summary>
+        public decimal Discount
 		{
 			get
 			{	

@@ -4,19 +4,24 @@ using BigCommerceNET.Models.Configuration;
 using BigCommerceNET.Models.Product;
 using BigCommerceNET.Services;
 using Netco.Extensions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace BigCommerceNET
 {
-	abstract class BigCommerceBaseProductsService : BigCommerceServiceBase
+    /// <summary>
+    /// The big commerce base products service.
+    /// </summary>
+    abstract class BigCommerceBaseProductsService : BigCommerceServiceBase
 	{
-		protected readonly WebRequestServices _webRequestServices;
+        /// <summary>
+        /// The web request services.
+        /// </summary>
+        protected readonly WebRequestServices _webRequestServices;
 
-		public BigCommerceBaseProductsService(WebRequestServices services)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BigCommerceBaseProductsService"/> class.
+        /// </summary>
+        /// <param name="services">The services.</param>
+        public BigCommerceBaseProductsService(WebRequestServices services)
 		{
 			if (services is not null)
 			{
@@ -26,6 +31,11 @@ namespace BigCommerceNET
                 throw new ArgumentException("The 'services' parameter is missing or empty.");
         }
 
+        /// <summary>
+        /// Fill weight unit.
+        /// </summary>
+        /// <param name="products">The products.</param>
+        /// <param name="marker">The marker.</param>
         protected virtual void FillWeightUnit(IEnumerable<BigCommerceProduct> products, string marker)
         {
             var command = BigCommerceCommand.GetStoreV2_OAuth;
@@ -40,6 +50,13 @@ namespace BigCommerceNET
         }
 
 
+        /// <summary>
+        /// Fill weight unit asynchronously.
+        /// </summary>
+        /// <param name="products">The products.</param>
+        /// <param name="token">The token.</param>
+        /// <param name="marker">The marker.</param>
+        /// <returns>A Task.</returns>
         protected virtual async Task FillWeightUnitAsync(IEnumerable<BigCommerceProduct> products, CancellationToken token, string marker)
 		{
 			var command = BigCommerceCommand.GetStoreV2_OAuth;
@@ -53,6 +70,11 @@ namespace BigCommerceNET
 			}
 		}
 
+        /// <summary>
+        /// Fill brands.
+        /// </summary>
+        /// <param name="products">The products.</param>
+        /// <param name="marker">The marker.</param>
         protected virtual void FillBrands(IEnumerable<BigCommerceProduct> products, string marker)
         {
             var brands = new List<BigCommerceBrand>();
@@ -74,6 +96,13 @@ namespace BigCommerceNET
             this.FillBrandsForProducts(products, brands);
         }
 
+        /// <summary>
+        /// Fill brands asynchronously.
+        /// </summary>
+        /// <param name="products">The products.</param>
+        /// <param name="token">The token.</param>
+        /// <param name="marker">The marker.</param>
+        /// <returns>A Task.</returns>
         protected virtual async Task FillBrandsAsync(IEnumerable<BigCommerceProduct> products, CancellationToken token, string marker)
 		{
 			var brands = new List<BigCommerceBrand>();
@@ -95,6 +124,11 @@ namespace BigCommerceNET
 			this.FillBrandsForProducts(products, brands);
 		}
 
+        /// <summary>
+        /// Fill products skus.
+        /// </summary>
+        /// <param name="products">The products.</param>
+        /// <param name="marker">The marker.</param>
         protected void FillProductsSkus(IEnumerable<BigCommerceProduct> products, string marker)
         {
             foreach (var product in products.Where(product => product.InventoryTracking.Equals(InventoryTrackingEnum.sku)))
@@ -115,6 +149,14 @@ namespace BigCommerceNET
             }
         }
 
+        /// <summary>
+        /// Fill products skus asynchronously.
+        /// </summary>
+        /// <param name="products">The products.</param>
+        /// <param name="isUnlimit">If true, is unlimit.</param>
+        /// <param name="token">The token.</param>
+        /// <param name="marker">The marker.</param>
+        /// <returns>A Task.</returns>
         protected async Task FillProductsSkusAsync(IEnumerable<BigCommerceProduct> products, bool isUnlimit, CancellationToken token, string marker)
 		{
 			var threadCount = isUnlimit ? MaxThreadsCount : 1;
@@ -137,7 +179,12 @@ namespace BigCommerceNET
 			});
 		}
 
-		protected void FillBrandsForProducts(IEnumerable<BigCommerceProduct> products, List<BigCommerceBrand> brands)
+        /// <summary>
+        /// Fill brands for products.
+        /// </summary>
+        /// <param name="products">The products.</param>
+        /// <param name="brands">The brands.</param>
+        protected void FillBrandsForProducts(IEnumerable<BigCommerceProduct> products, List<BigCommerceBrand> brands)
 		{
 			foreach (var product in products)
 			{
@@ -156,8 +203,13 @@ namespace BigCommerceNET
 
 				product.BrandName = brand.Name;
 			}
-		}       
+		}
 
+        /// <summary>
+        /// Get the store name.
+        /// </summary>
+        /// <param name="marker">The marker.</param>
+        /// <returns>A string.</returns>
         protected virtual string GetStoreName(string marker)
         {
             var command = BigCommerceCommand.GetStoreV2_OAuth;
@@ -169,6 +221,11 @@ namespace BigCommerceNET
 
         }
 
+        /// <summary>
+        /// Gets the domain.
+        /// </summary>
+        /// <param name="marker">The marker.</param>
+        /// <returns>A string.</returns>
         protected virtual string GetDomain(string marker)
         {
             var command = BigCommerceCommand.GetStoreV2_OAuth;
@@ -179,6 +236,11 @@ namespace BigCommerceNET
             return store.Response.Domain!;
         }
 
+        /// <summary>
+        /// Gets the secure URL.
+        /// </summary>
+        /// <param name="marker">The marker.</param>
+        /// <returns>A string.</returns>
         protected virtual string GetSecureURL(string marker)
         {
             var command = BigCommerceCommand.GetStoreV2_OAuth;

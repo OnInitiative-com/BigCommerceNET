@@ -2,10 +2,16 @@
 
 namespace BigCommerceNET.Models
 {
-	[ DataContract ]
+    /// <summary>
+    /// The big commerce object base.
+    /// </summary>
+    [ DataContract ]
 	public abstract class BigCommerceObjectBase
 	{
-		[ DataMember( Name = "id" ) ]
+        /// <summary>
+        /// Gets or Sets the id.
+        /// </summary>
+        [ DataMember( Name = "id" ) ]
 		public long Id{ get; set; }
 	}
 }

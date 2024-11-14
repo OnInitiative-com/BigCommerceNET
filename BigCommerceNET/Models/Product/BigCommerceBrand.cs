@@ -1,15 +1,23 @@
-﻿using System.Collections.Generic;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace BigCommerceNET.Models.Product
 {
-	[ DataContract ]
+    /// <summary>
+    /// The big commerce brand.
+    /// </summary>
+    [ DataContract ]
 	public class BigCommerceBrand: BigCommerceObjectBase
 	{
-		[ DataMember( Name = "name" ) ]
+        /// <summary>
+        /// Gets or Sets the name.
+        /// </summary>
+        [ DataMember( Name = "name" ) ]
 		public string? Name{ get; set; }
 
-		public BigCommerceBrand()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BigCommerceBrand"/> class.
+        /// </summary>
+        public BigCommerceBrand()
 		{
 		}
 	}

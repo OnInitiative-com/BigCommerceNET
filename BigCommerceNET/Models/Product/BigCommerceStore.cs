@@ -2,20 +2,35 @@
 
 namespace BigCommerceNET.Models.Product
 {
-	[DataContract]
+    /// <summary>
+    /// The big commerce store.
+    /// </summary>
+    [DataContract]
 	public class BigCommerceStore
 	{
 
-		[DataMember(Name = "name")]
+        /// <summary>
+        /// Gets or Sets the name.
+        /// </summary>
+        [DataMember(Name = "name")]
 		public string? Name { get; set; }
 
-		[DataMember(Name = "domain")]
+        /// <summary>
+        /// Gets or Sets the domain.
+        /// </summary>
+        [DataMember(Name = "domain")]
 		public string? Domain { get; set; }
 
-		[DataMember(Name = "secure_URL")]
+        /// <summary>
+        /// Gets or Sets the secure URL.
+        /// </summary>
+        [DataMember(Name = "secure_URL")]
 		public string? SecureURL { get; set; }
 
-		[DataMember(Name = "weight_units")]
+        /// <summary>
+        /// Gets or Sets the weight units.
+        /// </summary>
+        [DataMember(Name = "weight_units")]
 		public string? WeightUnits { get; set; }
 	}
 }

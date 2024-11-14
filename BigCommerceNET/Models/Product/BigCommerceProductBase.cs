@@ -2,17 +2,29 @@
 
 namespace BigCommerceNET.Models.Product
 {
-	[ DataContract ]
+    /// <summary>
+    /// The big commerce product base.
+    /// </summary>
+    [ DataContract ]
 	public class BigCommerceProductBase: BigCommerceObjectBase
 	{
-		[ DataMember( Name = "inventory_level" ) ]
+        /// <summary>
+        /// Gets or Sets the quantity.
+        /// </summary>
+        [ DataMember( Name = "inventory_level" ) ]
 		public string? Quantity{ get; set; }
 
-		[ DataMember( Name = "sku" ) ]
+        /// <summary>
+        /// Gets or Sets the sku.
+        /// </summary>
+        [ DataMember( Name = "sku" ) ]
 		public string? Sku{ get; set; }
 	}
 
-	public enum InventoryTrackingEnum
+    /// <summary>
+    /// The inventory tracking enum.
+    /// </summary>
+    public enum InventoryTrackingEnum
 	{
 		none,
 		simple,

@@ -2,10 +2,16 @@
 
 namespace BigCommerceNET.Models.Product
 {
-	[ DataContract ]
+    /// <summary>
+    /// The big commerce product primary images.
+    /// </summary>
+    [ DataContract ]
 	public class BigCommerceProductPrimaryImages
 	{
-		[ DataMember( Name = "standard_url" ) ]
+        /// <summary>
+        /// Gets or Sets the standard url.
+        /// </summary>
+        [ DataMember( Name = "standard_url" ) ]
 		public string? StandardUrl{ get; set; }
 	}
 }

@@ -1,18 +1,43 @@
 ﻿namespace BigCommerceNET.Models.Command
 {
-	internal class BigCommerceParam
+    /// <summary>
+    /// The big commerce param.
+    /// </summary>
+    internal class BigCommerceParam
 	{
-		public static readonly BigCommerceParam Unknown = new BigCommerceParam( string.Empty );
-		public static readonly BigCommerceParam OrdersModifiedDateFrom = new BigCommerceParam( "min_date_modified" );
-		public static readonly BigCommerceParam OrdersModifiedDateTo = new BigCommerceParam( "max_date_modified" );
-		public static readonly BigCommerceParam Limit = new BigCommerceParam( "limit" );
-		public static readonly BigCommerceParam Page = new BigCommerceParam( "page" );
+        /// <summary>
+        /// The unknown.
+        /// </summary>
+        public static readonly BigCommerceParam Unknown = new BigCommerceParam( string.Empty );
+        /// <summary>
+        /// The orders modified date from.
+        /// </summary>
+        public static readonly BigCommerceParam OrdersModifiedDateFrom = new BigCommerceParam( "min_date_modified" );
+        /// <summary>
+        /// The orders modified date to.
+        /// </summary>
+        public static readonly BigCommerceParam OrdersModifiedDateTo = new BigCommerceParam( "max_date_modified" );
+        /// <summary>
+        /// The limit.
+        /// </summary>
+        public static readonly BigCommerceParam Limit = new BigCommerceParam( "limit" );
+        /// <summary>
+        /// The page.
+        /// </summary>
+        public static readonly BigCommerceParam Page = new BigCommerceParam( "page" );
 
-		private BigCommerceParam( string name )
+        /// <summary>
+        /// Prevents a default instance of the <see cref="BigCommerceParam"/> class from being created.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        private BigCommerceParam( string name )
 		{
 			this.Name = name;
 		}
 
-		public string Name { get; private set; }
+        /// <summary>
+        /// Gets the name.
+        /// </summary>
+        public string Name { get; private set; }
 	}
 }

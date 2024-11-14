@@ -3,79 +3,157 @@ using System.Runtime.Serialization;
 
 namespace BigCommerceNET.Models.Product
 {
-	[ DataContract ]
+    /// <summary>
+    /// The big commerce product.
+    /// </summary>
+    [ DataContract ]
 	public class BigCommerceProduct: BigCommerceProductBase
 	{
-		[ DataMember( Name = "inventory_tracking" ) ]
+        /// <summary>
+        /// Gets or Sets the inventory tracking.
+        /// </summary>
+        [ DataMember( Name = "inventory_tracking" ) ]
 		public InventoryTrackingEnum InventoryTracking{ get; set; }
 
-		[ DataMember( Name = "skus" ) ]
+        /// <summary>
+        /// Gets or Sets the product options reference.
+        /// </summary>
+        [ DataMember( Name = "skus" ) ]
 		public BigCommerceReferenceObject? ProductOptionsReference{ get; set; }
 
-		public List<BigCommerceProductOption>? ProductOptions{ get; set; }
+        /// <summary>
+        /// Gets or Sets the product options.
+        /// </summary>
+        public List<BigCommerceProductOption>? ProductOptions{ get; set; }
 
-		[DataMember(Name = "main_images")]
+        /// <summary>
+        /// Gets or Sets the main images.
+        /// </summary>
+        [DataMember(Name = "main_images")]
 		public List<BigCommerceImage> Main_Images { get; set; }
 
-		[ DataMember( Name = "upc" ) ]
+        /// <summary>
+        /// Gets or Sets the upc.
+        /// </summary>
+        [ DataMember( Name = "upc" ) ]
 		public string? Upc{ get; set; }
 
-		[ DataMember( Name = "name" ) ]
+        /// <summary>
+        /// Gets or Sets the name.
+        /// </summary>
+        [ DataMember( Name = "name" ) ]
 		public string? Name{ get; set; }
 
-		[DataMember(Name = "availability")]
+        /// <summary>
+        /// Gets or Sets the availability.
+        /// </summary>
+        [DataMember(Name = "availability")]
 		public string? Availability { get; set; }
 
+        /// <summary>
+        /// Gets or Sets a value indicating whether free is shipping.
+        /// </summary>
         [DataMember(Name = "is_free_shipping")]
         public bool IsFreeShipping { get; set; }
 
+        /// <summary>
+        /// Gets or Sets the fixed cost shipping price.
+        /// </summary>
         [DataMember(Name = "fixed_cost_shipping_price")]
         public decimal FixedCostShippingPrice { get; set; }
 
+        /// <summary>
+        /// Gets or Sets the condition.
+        /// </summary>
         [DataMember(Name = "condition")]
-		public string? Condition { get; set; } 
+		public string? Condition { get; set; }
 
-		[ DataMember( Name = "description" ) ]
+        /// <summary>
+        /// Gets or Sets the description.
+        /// </summary>
+        [ DataMember( Name = "description" ) ]
 		public string? Description{ get; set; }
 
-		[ DataMember( Name = "price" ) ]
+        /// <summary>
+        /// Gets or Sets the price.
+        /// </summary>
+        [ DataMember( Name = "price" ) ]
 		public decimal? Price{ get; set; }
 
-		[DataMember(Name = "is_visible")]
+        /// <summary>
+        /// Gets or Sets a value indicating whether product is visible.
+        /// </summary>
+        [DataMember(Name = "is_visible")]
 		public bool IsProductVisible { get; set; }
 
-		[DataMember(Name = "type")]
+        /// <summary>
+        /// Gets or Sets the product type.
+        /// </summary>
+        [DataMember(Name = "type")]
 		public string? ProductType { get; set; }
 
-		[ DataMember( Name = "sale_price" ) ]
+        /// <summary>
+        /// Gets or Sets the sale price.
+        /// </summary>
+        [ DataMember( Name = "sale_price" ) ]
 		public decimal? SalePrice{ get; set; }
 
-		[ DataMember( Name = "retail_price" ) ]
+        /// <summary>
+        /// Gets or Sets the retail price.
+        /// </summary>
+        [ DataMember( Name = "retail_price" ) ]
 		public decimal? RetailPrice{ get; set; }
 
-		[ DataMember( Name = "cost_price" ) ]
+        /// <summary>
+        /// Gets or Sets the cost price.
+        /// </summary>
+        [ DataMember( Name = "cost_price" ) ]
 		public decimal? CostPrice{ get; set; }
 
-		[ DataMember( Name = "weight" ) ]
+        /// <summary>
+        /// Gets or Sets the weight.
+        /// </summary>
+        [ DataMember( Name = "weight" ) ]
 		public decimal? Weight{ get; set; }
 
-		public string? WeightUnit{ get; set; }
+        /// <summary>
+        /// Gets or Sets the weight unit.
+        /// </summary>
+        public string? WeightUnit{ get; set; }
 
-		[ DataMember( Name = "brand_id" ) ]
+        /// <summary>
+        /// Gets or Sets the brand id.
+        /// </summary>
+        [ DataMember( Name = "brand_id" ) ]
 		public long? BrandId{ get; set; }
 
-		public string? BrandName{ get; set; }
+        /// <summary>
+        /// Gets or Sets the brand name.
+        /// </summary>
+        public string? BrandName{ get; set; }
 
-		[ DataMember( Name = "thumbnail_image") ]
+        /// <summary>
+        /// Gets or Sets the thumbnail image URL.
+        /// </summary>
+        [ DataMember( Name = "thumbnail_image") ]
 		public BigCommerceProductPrimaryImages? ThumbnailImageURL { get; set; }
 
-		[DataMember(Name = "custom_url")]
+        /// <summary>
+        /// Gets or Sets the product URL.
+        /// </summary>
+        [DataMember(Name = "custom_url")]
 		public string? Product_URL { get; set; }
 
-		[DataMember(Name = "categories")]
+        /// <summary>
+        /// Gets or Sets the categories.
+        /// </summary>
+        [DataMember(Name = "categories")]
 		public int[]? Categories { get; set; }
 
-		public BigCommerceProduct()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BigCommerceProduct"/> class.
+        /// </summary>
+        public BigCommerceProduct()
 		{
 			this.ProductOptions = new List<BigCommerceProductOption>();
 			this.Main_Images = new List<BigCommerceImage>();

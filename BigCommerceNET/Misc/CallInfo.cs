@@ -1,42 +1,108 @@
 ﻿namespace BigCommerceNET.Misc
 {
-	public enum HttpMethodEnum { Get, Post, Put }
-	public enum MessageCategoryEnum { Information, Warning, Critical }
+    /// <summary>
+    /// The http method enum.
+    /// </summary>
+    public enum HttpMethodEnum { Get, Post, Put }
+    /// <summary>
+    /// The message category enum.
+    /// </summary>
+    public enum MessageCategoryEnum { Information, Warning, Critical }
 
-	public abstract class CallInfo
+    /// <summary>
+    /// The call info.
+    /// </summary>
+    public abstract class CallInfo
 	{
-		protected CallInfo()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CallInfo"/> class.
+        /// </summary>
+        protected CallInfo()
 		{
 			this.Mark = "Unknown";
 		}
 
-		public string? Mark { get; set; }
-		public string? LibMethodName { get; set; }
-		public string? Url { get; set; }
-		public MessageCategoryEnum Category { get; set; }
+        /// <summary>
+        /// Gets or Sets the mark.
+        /// </summary>
+        public string? Mark { get; set; }
+        /// <summary>
+        /// Gets or Sets the lib method name.
+        /// </summary>
+        public string? LibMethodName { get; set; }
+        /// <summary>
+        /// Gets or Sets the url.
+        /// </summary>
+        public string? Url { get; set; }
+        /// <summary>
+        /// Gets or Sets the category.
+        /// </summary>
+        public MessageCategoryEnum Category { get; set; }
 
-		public long? TenantId { get; set; }
-		public long? ChannelAccountId { get; set; }
+        /// <summary>
+        /// Gets or Sets the tenant id.
+        /// </summary>
+        public long? TenantId { get; set; }
+        /// <summary>
+        /// Gets or Sets the channel account id.
+        /// </summary>
+        public long? ChannelAccountId { get; set; }
 	}
 
-	public sealed class RequestInfo : CallInfo
+    /// <summary>
+    /// The request info.
+    /// </summary>
+    public sealed class RequestInfo : CallInfo
 	{
-		public HttpMethodEnum HttpMethod { get; set; }
-		public object? Body { get; set; }
+        /// <summary>
+        /// Gets or Sets the http method.
+        /// </summary>
+        public HttpMethodEnum HttpMethod { get; set; }
+        /// <summary>
+        /// Gets or Sets the body.
+        /// </summary>
+        public object? Body { get; set; }
 	}
 
-	public sealed class ResponseInfo : CallInfo
+    /// <summary>
+    /// The response info.
+    /// </summary>
+    public sealed class ResponseInfo : CallInfo
 	{
-		public object? Response { get; set; }
-		public string? RemainingCalls { get; set; }
-		public string? SystemVersion { get; set; }
-		public string? StatusCode { get; set; }
+        /// <summary>
+        /// Gets or Sets the response.
+        /// </summary>
+        public object? Response { get; set; }
+        /// <summary>
+        /// Gets or Sets the remaining calls.
+        /// </summary>
+        public string? RemainingCalls { get; set; }
+        /// <summary>
+        /// Gets or Sets the system version.
+        /// </summary>
+        public string? SystemVersion { get; set; }
+        /// <summary>
+        /// Gets or Sets the status code.
+        /// </summary>
+        public string? StatusCode { get; set; }
 	}
 
-	public sealed class RetryInfo : CallInfo
+    /// <summary>
+    /// The retry info.
+    /// </summary>
+    public sealed class RetryInfo : CallInfo
 	{
-		public int TotalRetriesAttempts { get; set; }
-		public int CurrentRetryAttempt { get; set; }
-		public double DelayInSeconds { get; set; }
+        /// <summary>
+        /// Gets or Sets the total retries attempts.
+        /// </summary>
+        public int TotalRetriesAttempts { get; set; }
+        /// <summary>
+        /// Gets or Sets the current retry attempt.
+        /// </summary>
+        public int CurrentRetryAttempt { get; set; }
+        /// <summary>
+        /// Gets or Sets the delay in seconds.
+        /// </summary>
+        public double DelayInSeconds { get; set; }
 	}
 }
