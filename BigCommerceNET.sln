@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BigCommerceNET", "BigCommer
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProject", "TestProject\TestProject.csproj", "{358C2241-CA89-4035-88EE-7649C66C7AFC}"
 EndProject
-Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "Documentation", "Documentation\Documentation.shfbproj", "{0345FBFC-1627-4EB7-9AA3-039702C5F0D2}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{358C2241-CA89-4035-88EE-7649C66C7AFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{358C2241-CA89-4035-88EE-7649C66C7AFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{358C2241-CA89-4035-88EE-7649C66C7AFC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0345FBFC-1627-4EB7-9AA3-039702C5F0D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0345FBFC-1627-4EB7-9AA3-039702C5F0D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0345FBFC-1627-4EB7-9AA3-039702C5F0D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0345FBFC-1627-4EB7-9AA3-039702C5F0D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
