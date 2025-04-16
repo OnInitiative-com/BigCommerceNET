@@ -11,13 +11,13 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/OnInitiative-com/BigCommerceNET</RepositoryUrl>
     <PackageTags>bigcommerce</PackageTags>
-    <PackageReleaseNotes>Initial release</PackageReleaseNotes>
-    <AssemblyVersion>0.11.2</AssemblyVersion>
-    <FileVersion>0.11.2</FileVersion>
+    <PackageReleaseNotes>Updated to .NET 9.0</PackageReleaseNotes>
+    <AssemblyVersion>0.11.4</AssemblyVersion>
+    <FileVersion>0.11.4</FileVersion>
     <PackageLicenseFile>license.txt</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <PackageIcon>app_logo.png</PackageIcon>
-    <Version>0.11.3</Version>
+    <Version>0.11.4</Version>
     <Company>ON INITIATIVE LLC</Company>
     <Authors>ON INITIATIVE LLC</Authors>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
